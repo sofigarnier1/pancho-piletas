@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tablero de pruebas · Cloro y Piletas Pancho</title>
+<style>
+:root { --bg:#f3f6f1; --sf:#fff; --sf2:#e9efe6; --ln:#cfd8ca; --fg:#14201a; --mu:#5b6d60; --ac:#2f7d3a; --acfg:#fff;
+  --ok:#1d7a3a; --okb:#dcefe0; --fl:#b3261e; --flb:#f9dedc; --wn:#9a5b00; --wnb:#fbe9cc; --sk:#5b6d60; --skb:#e4e8e2;
+  --mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg:#080d08; --sf:#111811; --sf2:#182118; --ln:#263326; --fg:#e8f0e8; --mu:#8fa28f; --ac:#4a9e4a; --acfg:#07140c;
+  --ok:#6fcf86; --okb:#12301b; --fl:#ff8a80; --flb:#3a1613; --wn:#f2b35a; --wnb:#3a2a10; --sk:#8fa28f; --skb:#1d261d; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px 64px; }
+header { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--ln); padding: 12px 0; margin: 0 -16px; padding-inline: 16px; }
+.row1 { display:flex; flex-wrap:wrap; gap:6px 16px; align-items:baseline; justify-content:space-between; }
+h1 { margin:0; font-size:1.15rem; } .mu { color: var(--mu); } .mono { font-family: var(--mono); font-size:.8rem; }
+.bar { display:flex; height:10px; border-radius:2px; overflow:hidden; background:var(--sf2); margin:8px 0 6px; }
+.bar i { display:block; height:100%; } .b-ok{background:var(--ok)} .b-fl{background:var(--fl)} .b-wn{background:var(--wn)} .b-sk{background:var(--sk)}
+.counts { display:flex; flex-wrap:wrap; gap:4px 16px; color:var(--mu); font-variant-numeric: tabular-nums; } .counts b { color:var(--fg); font-size:1.05rem; }
+.live { display:inline-flex; align-items:center; gap:6px; } .dot { width:8px; height:8px; border-radius:50%; background:var(--sk); }
+.dot.on { background: var(--ok); animation: pulse 1.2s infinite; } @keyframes pulse { 50% { opacity:.3 } }
+@media (prefers-reduced-motion: reduce) { .dot.on { animation:none } }
+.running { margin-top:4px; font-family:var(--mono); font-size:.78rem; color:var(--mu); overflow-wrap:anywhere; }
+.tools { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0; align-items:center; }
+input[type=search], select, textarea { font:inherit; color:var(--fg); background:var(--sf); border:1px solid var(--ln); border-radius:6px; padding:6px 10px; }
+input[type=search] { flex:1 1 220px; min-width:0; }
+.chip { font:inherit; font-size:.82rem; border:1px solid var(--ln); background:var(--sf); color:var(--fg); border-radius:999px; padding:4px 12px; cursor:pointer; }
+.chip[aria-pressed=true] { background:var(--ac); color:var(--acfg); border-color:var(--ac); }
+.panel { background:var(--sf); border:1px solid var(--ln); border-radius:8px; padding:12px 16px; margin-bottom:14px; }
+.panel h2 { margin:0 0 6px; font-size:1rem; } .panel summary { cursor:pointer; font-weight:600; }
+.cov { display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-top:8px; }
+.cov div { background:var(--sf2); border-radius:6px; padding:8px 12px; } .cov b { font-size:1.2rem; }
+section.f { margin-top:18px; } section.f h3 { margin:0 0 6px; font-size:.95rem; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
+.rows { border:1px solid var(--ln); border-radius:8px; background:var(--sf); overflow:hidden; }
+.r { border-bottom:1px solid var(--ln); } .r:last-child { border:0 } .r[hidden] { display:none }
+.rh { all:unset; box-sizing:border-box; cursor:pointer; display:grid; grid-template-columns: 82px minmax(0,1fr) auto; gap:4px 12px; padding:8px 12px; width:100%; align-items:start; }
+.rh:focus-visible { outline:2px solid var(--ac); outline-offset:-2px; }
+.pill { font-family:var(--mono); font-size:.7rem; border-radius:4px; padding:1px 6px; text-align:center; border:1px solid transparent; }
+.passed{background:var(--okb);color:var(--ok);border-color:var(--ok)} .failed,.timedOut,.interrupted{background:var(--flb);color:var(--fl);border-color:var(--fl)}
+.blocked{background:var(--wnb);color:var(--wn);border-color:var(--wn)} .skipped{background:var(--skb);color:var(--sk);border-color:var(--sk)}
+.pending{background:transparent;color:var(--mu);border-color:var(--ln)}
+.t { min-width:0; overflow-wrap:anywhere; } .t small { display:block; color:var(--mu); font-family:var(--mono); font-size:.7rem; }
+.tag { font-family:var(--mono); font-size:.66rem; border:1px solid var(--wn); color:var(--wn); border-radius:3px; padding:0 5px; margin-left:6px; }
+.tag.new { border-color:var(--fl); color:var(--fl); } .tag.fixed { border-color:var(--ok); color:var(--ok); } .tag.note { border-color:var(--mu); color:var(--mu); }
+.ms { font-family:var(--mono); font-size:.72rem; color:var(--mu); }
+.d { display:none; padding:2px 12px 12px 106px; } .r.open .d { display:block; }
+pre { margin:4px 0; padding:8px 10px; background:var(--sf2); border:1px solid var(--ln); border-radius:6px; overflow-x:auto; font:12px/1.5 var(--mono); white-space:pre-wrap; overflow-wrap:anywhere; }
+textarea { width:100%; min-height:56px; resize:vertical; } .saved { font-size:.75rem; color:var(--mu); }
+.empty { color:var(--mu); padding:24px 0; }
+.auto { margin:6px 0 8px; } .auto h4 { margin:0 0 2px; font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; color:var(--mu); }
+.shot { display:block; max-width:100%; max-height:320px; border:1px solid var(--ln); border-radius:6px; margin:6px 0; }
+#next h2 { margin:0 0 6px; font-size:1rem; } #next code { font-family:var(--mono); background:var(--sf2); border:1px solid var(--ln); border-radius:4px; padding:1px 6px; }
+#next ol { margin:6px 0 0; padding-left:20px; } #next li { margin:3px 0; }
+@media (max-width:640px) { .rh { grid-template-columns:70px minmax(0,1fr) } .ms { display:none } .d { padding-left:12px } }
+</style></head>
+<body><div class="wrap">
+<header>
+  <div class="row1"><h1>Tablero de pruebas · Cloro y Piletas Pancho</h1><span class="live"><span class="dot" id="dot"></span><span class="mu mono" id="status">cargando…</span></span></div>
+  <div class="bar" id="bar" role="img" aria-label="Resultado"></div>
+  <div class="counts" id="counts"></div>
+  <div class="running" id="running"></div>
+</header>
+
+<div class="tools">
+  <input type="search" id="q" placeholder="Buscar prueba, archivo o error" aria-label="Buscar">
+  <button class="chip" data-f="all" aria-pressed="true" type="button">Todas</button>
+  <button class="chip" data-f="bad" aria-pressed="false" type="button">Fallas</button>
+  <button class="chip" data-f="blocked" aria-pressed="false" type="button">No corrieron</button>
+  <button class="chip" data-f="pending" aria-pressed="false" type="button">Sin correr todavía</button>
+  <button class="chip" data-f="passed" aria-pressed="false" type="button">OK</button>
+  <button class="chip" data-f="note" aria-pressed="false" type="button">Con nota</button>
+  <button class="chip" data-f="new" aria-pressed="false" type="button">Fallan ahora y no antes</button>
+  <label class="mu">Comparar con <select id="cmp" aria-label="Comparar con otra corrida"><option value="">(sin comparar)</option></select></label>
+</div>
+<div class="panel" id="next" hidden></div>
+<div class="panel" id="covp" hidden></div>
+<div id="list"></div>
+<p class="empty" id="empty" hidden>Ninguna prueba coincide.</p>
+</div>
+<script>
+(function () {
+  var $ = function (i) { return document.getElementById(i); };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var LAB = { passed: "OK", failed: "FALLA", timedOut: "TIEMPO", interrupted: "CORTADA", skipped: "OMITIDA", blocked: "NO CORRIÓ", pending: "SIN CORRER" };
+  var BAD = { failed: 1, timedOut: 1, interrupted: 1 };
+  var S = null, prev = {}, filt = "all", open = {}, typing = null;
+  var key = function (e) { return e.project + "|" + e.file + "|" + e.title; };
+
+  function load() {
+    fetch("/api/state").then(function (r) { return r.json(); }).then(function (d) { S = d; render(); }).catch(function () { $("status").textContent = "sin conexión con el tablero"; });
+  }
+  function fillRuns() {
+    var sel = $("cmp"), cur = sel.value, ids = S.runs || [];
+    if (sel.options.length - 1 === ids.length) return;
+    sel.innerHTML = '<option value="">(sin comparar)</option>' + ids.map(function (i) { return '<option value="' + esc(i) + '">' + esc(i.replace("T", " ").slice(0, 19)) + "</option>"; }).join("");
+    sel.value = cur;
+  }
+  $("cmp").addEventListener("change", function () {
+    var id = this.value; prev = {};
+    if (!id) return render();
+    fetch("/api/run?id=" + encodeURIComponent(id)).then(function (r) { return r.json(); }).then(function (d) { (d.results.entries || []).forEach(function (e) { prev[key(e)] = e.status; }); render(); });
+  });
+
+  function render() {
+    fillRuns();
+    var SETUP = /^(setup|setup-client|e2e-setup|e2e-teardown)$/;
+    var E = (S.results && S.results.entries || []).filter(function (e) { return !SETUP.test(e.project); });
+    // El total es el del PLAN de la corrida (no el de la última reanudación, que solo tiene lo pendiente): las pruebas del
+    // plan que todavía no tienen resultado se muestran como "sin correr"
+    var planTests = ((S.plan && S.plan.tests) || []).filter(function (t) { return !SETUP.test(t.project); });
+    var have = {}; E.forEach(function (e) { have[key(e)] = 1; });
+    var ranCount = E.length;
+    planTests.forEach(function (t) { if (!have[key(t)]) E.push({ project: t.project, file: t.file, title: t.title, status: "pending", ms: 0, error: "", autoNote: "" }); });
+    var c = { passed: 0, bad: 0, blocked: 0, skipped: 0, pending: 0 };
+    E.forEach(function (e) { if (e.status === "passed") c.passed++; else if (BAD[e.status]) c.bad++; else if (e.status === "blocked") c.blocked++; else if (e.status === "pending") c.pending++; else c.skipped++; });
+    var L = S.live, total = E.length, done = ranCount, n = Math.max(total, 1);
+    var running = L && !L.finished && (Date.now() - new Date(L.updated).getTime()) < 120000;
+    $("dot").className = "dot" + (running ? " on" : "");
+    $("status").textContent = running ? "corriendo · " + done + " de " + total : L && L.finished ? "terminó · " + new Date(L.updated).toLocaleTimeString() : "sin corrida activa";
+    $("running").textContent = running && L.running ? "Ahora: " + L.running : "";
+    $("bar").innerHTML = '<i class="b-ok" style="width:' + c.passed / n * 100 + '%"></i><i class="b-fl" style="width:' + c.bad / n * 100 + '%"></i><i class="b-wn" style="width:' + c.blocked / n * 100 + '%"></i><i class="b-sk" style="width:' + c.skipped / n * 100 + '%"></i>';
+    $("counts").innerHTML = "<span><b>" + c.passed + "</b> OK</span><span><b>" + c.bad + "</b> fallas</span><span><b>" + c.blocked + "</b> no corrieron</span><span><b>" + c.skipped + "</b> omitidas</span><span><b>" + c.pending + "</b> sin correr</span><span>de <b>" + total + "</b></span>";
+    renderCov(); renderNext(E);
+    // agrupar por archivo (las fallas primero)
+    var g = {}, order = [];
+    E.forEach(function (e) { if (!g[e.file]) { g[e.file] = []; order.push(e.file); } g[e.file].push(e); });
+    order.sort(function (a, b) { var fa = g[a].some(function (x) { return BAD[x.status]; }), fb = g[b].some(function (x) { return BAD[x.status]; }); return (fb - fa) || a.localeCompare(b); });
+    var q = $("q").value.trim().toLowerCase(), notes = S.notes || {}, html = "", shown = 0;
+    order.forEach(function (f) {
+      var rows = "", fails = 0;
+      g[f].forEach(function (e) {
+        var k = key(e), note = notes[k], pv = prev[k], isBad = !!BAD[e.status];
+        var isNew = isBad && Object.keys(prev).length && pv && pv === "passed", fixed = e.status === "passed" && pv && BAD[pv];
+        var ok = (filt === "all" || (filt === "bad" && isBad) || (filt === "blocked" && e.status === "blocked") || (filt === "pending" && e.status === "pending") || (filt === "passed" && e.status === "passed") || (filt === "note" && note) || (filt === "new" && isNew))
+          && (!q || (e.title + " " + e.file + " " + e.error).toLowerCase().indexOf(q) >= 0);
+        if (!ok) return; shown++; if (isBad) fails++;
+        var tags = (isNew ? '<span class="tag new">nueva falla</span>' : "") + (fixed ? '<span class="tag fixed">arreglada</span>' : "") + (note ? '<span class="tag note">nota</span>' : "");
+        rows += '<div class="r' + (open[k] ? " open" : "") + '" data-k="' + esc(k) + '"><button class="rh" type="button" aria-expanded="' + !!open[k] + '"><span class="pill ' + e.status + '">' + (LAB[e.status] || e.status) + '</span><span class="t">' + esc(e.title) + tags + "<small>" + esc(e.project) + "</small></span><span class=\"ms\">" + (e.ms / 1000).toFixed(1) + " s</span></button>"
+          + '<div class="d">' + (e.autoNote ? '<div class="auto"><h4>Qué falló (lo anotó la prueba sola)</h4><pre>' + esc(e.autoNote) + "</pre>" + (e.screenshot ? '<a href="/api/file?p=' + encodeURIComponent(e.screenshot) + '" target="_blank" rel="noreferrer"><img class="shot" loading="lazy" alt="Captura de la falla" src="/api/file?p=' + encodeURIComponent(e.screenshot) + '"></a>' : "") + "</div>" : "") + (e.error ? "<details><summary class=\"mu\">Mensaje completo de Playwright</summary><pre>" + esc(e.error) + "</pre></details>" : "") + '<label class="mu">Nota <textarea data-note="' + esc(k) + '" placeholder="Qué pasó / qué hay que hacer. Se guarda sola y queda para las próximas corridas.">' + esc(note ? note.text : "") + '</textarea></label><span class="saved"></span></div></div>';
+      });
+      if (rows) html += '<section class="f"><h3>' + esc(f) + ' <span class="mu mono">' + g[f].length + " pruebas" + (fails ? " · " + fails + " fallas" : "") + '</span></h3><div class="rows">' + rows + "</div></section>";
+    });
+    if (typing) return; // no pisar lo que se está escribiendo
+    $("list").innerHTML = html; $("empty").hidden = shown > 0;
+  }
+  // Cómo seguir: la corrida se corta en la primera falla; se anota, se arregla y se reanuda desde ahí
+  function renderNext(E) {
+    var el = $("next"), plan = S.plan, L = S.live;
+    var firstBad = E.filter(function (e) { return BAD[e.status]; })[0];
+    var running = L && !L.finished && (Date.now() - new Date(L.updated).getTime()) < 120000;
+    if (!plan || running || !firstBad) { el.hidden = true; return; }
+    var done = {}; E.forEach(function (e) { done[key(e)] = e.status; });
+    var pending = plan.tests.filter(function (t) { var s = done[key(t)]; return s !== "passed" && s !== "skipped"; });
+    var files = {}; pending.forEach(function (t) { files[t.file] = 1; });
+    el.hidden = false;
+    el.innerHTML = "<h2>La corrida se cortó: cómo seguir</h2><p>Primera falla: <b>" + esc(firstBad.title) + "</b> <span class=\"mu mono\">(" + esc(firstBad.file) + ")</span></p><ol>"
+      + "<li>Mirá <b>«Qué falló»</b> más abajo (la prueba lo anotó sola) y agregá tu nota si hace falta.</li>"
+      + "<li>Arreglalo.</li>"
+      + "<li>Reanudá desde esa falla, sin repetir lo que ya pasó: <code>node scripts/e2e-reanudar.mjs</code> (quedan " + pending.length + " pruebas en " + Object.keys(files).length + " archivos).</li>"
+      + "<li>Si lo que tocaste es código compartido (base de datos, sesión, componentes comunes, soporte de los tests), el script <b>se niega</b> a reanudar porque lo anterior pudo quedar afectado: en ese caso corré todo de nuevo con <code>scripts/e2e-prod.sh</code>.</li></ol>";
+  }
+  function renderCov() {
+    var cv = S.coverage, L = S.live, el = $("covp");
+    if (!cv && !(L && L.coverage)) { el.hidden = true; return; }
+    el.hidden = false;
+    if (cv && cv.summary) {
+      var s = cv.summary, p = function (x) { return x.done + "/" + x.total + " (" + Math.round(x.total ? x.done / x.total * 100 : 100) + "%)"; };
+      var det = function (t, a) { return a && a.length ? "<details><summary>" + t + " (" + a.length + ")</summary><pre>" + esc(a.slice(0, 300).join("\n")) + (a.length > 300 ? "\n… y " + (a.length - 300) + " más" : "") + "</pre></details>" : ""; };
+      el.innerHTML = "<h2>Cobertura real (corrida terminada)</h2><div class=\"cov\"><div>Acciones de servidor<br><b>" + p(s.actions) + "</b></div><div>Endpoints de la API<br><b>" + p(s.api) + "</b></div><div>Controles de pantalla<br><b>" + p(s.controls) + "</b></div></div>"
+        + det("Acciones sin probar", cv.actionsMissing) + det("Endpoints sin probar", cv.apiMissing) + det("Controles sin usar", cv.controlsMissing) + det("Acciones que ninguna pantalla usa", cv.actionsWithoutScreen);
+    } else {
+      var k = L.coverage;
+      el.innerHTML = "<h2>Cobertura (en vivo)</h2><div class=\"cov\"><div>Acciones distintas ejecutadas<br><b>" + k.actionIds + "</b></div><div>Llamadas a la API distintas<br><b>" + k.api + "</b></div><div>Controles usados<br><b>" + k.controlsUsed + " / " + k.controlsSeen + "</b></div></div><p class=\"mu\">El detalle de lo que falta aparece al terminar la corrida.</p>";
+    }
+  }
+  document.addEventListener("click", function (e) {
+    var h = e.target.closest(".rh"); if (h) { var r = h.parentNode, k = r.dataset.k; open[k] = !r.classList.contains("open"); r.classList.toggle("open"); h.setAttribute("aria-expanded", String(open[k])); return; }
+    var c = e.target.closest(".chip"); if (c) { filt = c.dataset.f; document.querySelectorAll(".chip").forEach(function (x) { x.setAttribute("aria-pressed", String(x === c)); }); render(); }
+  });
+  $("q").addEventListener("input", render);
+  var timer = {};
+  document.addEventListener("input", function (e) {
+    var t = e.target; if (!t.dataset || t.dataset.note == null) return;
+    typing = t.dataset.note; clearTimeout(timer[typing]);
+    var saved = t.closest(".d").querySelector(".saved"), k = t.dataset.note, text = t.value;
+    saved.textContent = "guardando…";
+    timer[k] = setTimeout(function () {
+      fetch("/api/note", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ key: k, text: text }) })
+        .then(function () { saved.textContent = "guardada"; S.notes = S.notes || {}; if (text.trim()) S.notes[k] = { text: text }; else delete S.notes[k]; typing = null; })
+        .catch(function () { saved.textContent = "no se pudo guardar"; typing = null; });
+    }, 600);
+  });
+  load(); setInterval(load, 2000);
+})();
+</script></body></html>

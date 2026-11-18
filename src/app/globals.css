@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Brand tokens → Tailwind utilities */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  /* Landing extended tokens */
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-surface: var(--surface);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-comfortaa);
+}
+
+/* ── Brand palette (Cloro y Piletas Pancho) ── */
+:root {
+  --radius: 0.625rem;
+
+  /* Azul principal #1B5FA8 */
+  --primary: oklch(0.45 0.14 258);
+  --primary-foreground: oklch(1 0 0);
+
+  /* Azul oscuro #0F3D6E */
+  --primary-dark: oklch(0.27 0.09 258);
+
+  /* Azul claro acento #4A9FD4 */
+  --primary-light: oklch(0.64 0.11 236);
+
+  /* Fondo muy claro */
+  --surface: oklch(0.97 0.015 228);
+
+  /* Azul claro acento #4A9FD4 */
+  --secondary: oklch(0.64 0.11 236);
+  /* Texto oscuro: el blanco sobre este celeste da ~2,9:1 (mínimo AA = 4,5:1) */
+  --secondary-foreground: oklch(0.2 0.07 258);
+
+  /* Fondo claro #F0F7FF */
+  --background: oklch(0.97 0.015 228);
+  --foreground: oklch(0.26 0.09 258);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.26 0.09 258);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.26 0.09 258);
+
+  /* Muted neutro */
+  --muted: oklch(0.94 0.01 228);
+  --muted-foreground: oklch(0.52 0.04 240);
+
+  /* Accent = azul claro #4A9FD4 suave */
+  --accent: oklch(0.93 0.04 228);
+  --accent-foreground: oklch(0.45 0.14 258);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.88 0.02 228);
+  --input: oklch(0.88 0.02 228);
+  --ring: oklch(0.45 0.14 258);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 {
+  font-family: var(--font-comfortaa), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+}
+
+/* ── Fondo de agua ── */
+.water-bg {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background-color: #e8f7ff;
+  background-image: linear-gradient(
+    180deg,
+    rgba(246, 252, 255, 0.86) 0%,
+    rgba(223, 244, 255, 0.76) 34%,
+    rgba(205, 235, 251, 0.72) 68%,
+    rgba(235, 248, 255, 0.84) 100%
+  );
+}
+
+.water-bg::before {
+  content: "";
+  position: absolute;
+  inset: -2%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      112deg,
+      transparent 4%,
+      rgba(255, 255, 255, 0.2) 18%,
+      transparent 32%,
+      transparent 56%,
+      rgba(66, 164, 218, 0.09) 68%,
+      transparent 82%
+    ),
+    linear-gradient(
+      68deg,
+      transparent 10%,
+      rgba(255, 255, 255, 0.14) 30%,
+      transparent 46%,
+      rgba(74, 159, 212, 0.07) 67%,
+      transparent 86%
+    );
+  background-size: 100% 100%;
+  filter: blur(24px);
+  opacity: 0.8;
+  animation: water-drift 26s ease-in-out infinite alternate;
+}
+
+.water-bg::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(242, 250, 255, 0.58), rgba(222, 243, 253, 0.64)),
+    url("/landing/water-texture-premium.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.62;
+}
+
+.water-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Animaciones de la landing ── */
+@keyframes float-bubble {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.15; }
+  50%       { transform: translateY(-28px) scale(1.08); opacity: 0.35; }
+}
+
+@keyframes wave-bob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes soft-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@keyframes water-drift {
+  from { transform: translate3d(-1%, -0.25%, 0) scale(1.02); }
+  to   { transform: translate3d(1%, 0.25%, 0) scale(1.04); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@media (max-width: 640px) {
+  .water-bg::before {
+    animation: none;
+    opacity: 0.34;
+  }
+
+  .water-bg::after {
+    opacity: 0.48;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Manual de usuario: al imprimir o guardar en PDF se suelta la altura fija del panel y se ocultan los menús */
+@media print {
+  body:has(.manual-print) { background: #fff !important; color: #111 !important; }
+  body:has(.manual-print) .h-screen { height: auto !important; overflow: visible !important; }
+  body:has(.manual-print) main { overflow: visible !important; }
+  body:has(.manual-print) aside,
+  body:has(.manual-print) header.sticky { display: none !important; }
+  body:has(.manual-print) .manual-print { max-width: none; }
+}
+
+/* Planilla mensual del service: al imprimir sale solo la tabla, sin menús ni botones, en hoja apaisada */
+@media print {
+  @page { size: landscape; margin: 10mm; }
+  body:has(.planilla-print) { background: #fff !important; color: #111 !important; }
+  body:has(.planilla-print) .h-screen { height: auto !important; overflow: visible !important; }
+  body:has(.planilla-print) main { overflow: visible !important; }
+  body:has(.planilla-print) aside,
+  body:has(.planilla-print) header.sticky,
+  body:has(.planilla-print) .bo-back,
+  body:has(.planilla-print) .bo-icon-btn,
+  body:has(.planilla-print) .no-print { display: none !important; }
+  .planilla-print { max-width: none !important; padding: 0 !important; }
+  .planilla-print .bo-table-wrap { overflow: visible !important; }
+  .planilla-print .planilla-table td, .planilla-print .planilla-table th { padding: 4px 6px !important; border: 1px solid #999 !important; }
+  .planilla-print a { color: inherit !important; text-decoration: none !important; }
+}

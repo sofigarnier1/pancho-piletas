@@ -1,0 +1,13 @@
+/* Vista previa de la landing dentro del backoffice: las secciones reales, escaladas y sin
+   las alturas de pantalla completa ni los elementos fijos (que no tienen sentido dentro de un marco). */
+.lv3.lv3-vista { min-height: 0; position: relative; overflow: hidden; }
+.lv3-vista .hero { height: auto; min-height: 0; }
+.lv3-vista .hero-stage { position: relative; height: 640px; }
+.lv3-vista .prod-pin,
+.lv3-vista .ba-pin,
+.lv3-vista .cta,
+.lv3-vista .under,
+.lv3-vista .closing { height: auto; min-height: 0; }
+.lv3-vista .serv-visual { position: relative; top: 0; height: 520px; }
+.lv3-vista .faq-wrap .sec-head { position: static; }
+.lv3-vista .nav, .lv3-vista .fab, .lv3-vista .progress { position: absolute; }

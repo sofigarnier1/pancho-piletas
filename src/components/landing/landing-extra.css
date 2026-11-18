@@ -1,0 +1,1306 @@
+/* Agregados de la integración sobre el diseño V3 (landing.css): datos reales que la demo no tenía.
+   Todo con alcance .lv3. */
+
+.lv3 { min-height: 100vh; }
+
+/* Barra: sesión */
+
+/* Botón de pausa del video (en la demo se creaba por script) */
+.lv3 .video-pause { position: absolute; left: 5%; bottom: 25px; z-index: 5; border: 1px solid #ffffff60; border-radius: 30px; padding: 8px 14px; background: #081f3a30; color: #fff; backdrop-filter: blur(6px); }
+
+/* Catálogo con productos reales */
+.lv3 .lv3-filtros { margin-bottom: 30px; flex-wrap: wrap; }
+.lv3 .v3-product-grid.lv3-catalogo { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.lv3 .v3-product .lv3-precio { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 14px; }
+.lv3 .v3-product .lv3-precio b { font-family: var(--font-comfortaa), sans-serif; font-size: 24px; color: var(--deep); }
+.lv3 .v3-product .lv3-precio span { font-size: 12px; color: var(--muted); }
+.lv3 .v3-product .lv3-precio span.hay { color: #1d7a4a; font-weight: 600; }
+@media (max-width: 650px) {
+  .lv3 .v3-product-grid.lv3-catalogo { grid-template-columns: 1fr; }
+}
+
+/* Caso real cargado desde el CMS */
+.lv3 .lv3-caso { margin: 45px auto 0; max-width: 1000px; color: #eef8ff; }
+.lv3 .lv3-caso img { width: 100%; margin-top: 16px; border-radius: 28px; border: 6px solid #e9f5fc; aspect-ratio: 16 / 9; object-fit: cover; }
+.lv3 .lv3-caso figcaption { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; font-size: 14px; line-height: 1.7; }
+.lv3 .lv3-caso figcaption b { font-weight: 600; }
+
+/* Nosotros: cifras del CMS */
+.lv3 .lv3-cifras { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 26px; color: #e9f6ff; font-size: 14px; }
+.lv3 .lv3-cifras b { display: block; font-family: var(--font-comfortaa), sans-serif; font-size: 40px; line-height: 1.1; color: #fff; }
+
+/* Testimonios reales (solo si el CMS los tiene) */
+.lv3 .lv3-testimonios h2 { color: #fff; margin: 20px 0 34px; }
+.lv3 .lv3-testimonios .eyebrow { color: #bfe6ff; }
+.lv3 .lv3-testimonios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+.lv3 .lv3-testimonios-grid article { background: #f0f7fff2; border-radius: 22px; padding: 26px; color: var(--deep); box-shadow: 0 20px 40px #082e5533; }
+.lv3 .lv3-testimonios-grid article > p { font-size: 15px; line-height: 1.8; color: var(--ink); }
+.lv3 .lv3-estrellas { color: var(--blue) !important; letter-spacing: 2px; margin-bottom: 12px; }
+.lv3 .lv3-autor { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.lv3 .lv3-autor > div { display: flex; flex-direction: column; }
+.lv3 .lv3-autor span { font-size: 12px; color: var(--muted); }
+.lv3 .lv3-autor-foto { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.lv3 .lv3-resenas { display: inline-block; margin-top: 26px; color: #fff; text-decoration: underline; text-underline-offset: 5px; font-size: 14px; }
+
+/* Cierre: contacto y condiciones de compra del CMS */
+.lv3 .closing { height: auto; min-height: 570px; padding-bottom: 70px; }
+.lv3 .lv3-cierre-acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+.lv3 .lv3-directo { color: #fff; font-size: 14px; text-decoration: underline; text-underline-offset: 5px; }
+.lv3 .lv3-condiciones { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; max-width: 760px; }
+.lv3 .lv3-condiciones li { padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .3); font-size: 13px; background: rgba(8, 31, 58, .35); backdrop-filter: blur(8px); }
+
+/* Pie con contacto y enlaces legales */
+.lv3 .sober-footer { flex-wrap: wrap; }
+.lv3 .lv3-pie p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+.lv3 .lv3-pie-links { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 13px; color: var(--deep); }
+.lv3 .lv3-pie-links a { display: inline-flex; align-items: center; gap: 6px; }
+.lv3 .lv3-pie-links a:hover { color: var(--blue); }
+.lv3 .lv3-pie-links svg { width: 16px; height: 16px; color: #1d9f55; }
+
+/* En el celular la barra de consulta deja lugar al botón de WhatsApp */
+@media (max-width: 650px) {
+  .lv3 .mobile-contact { right: 88px; }
+  .lv3 .mobile-contact button { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lv3 .closing { min-height: 560px; }
+}
+
+/* Contraste del pie (accesibilidad AA): fondo sólido y textos más oscuros */
+.lv3 footer { background: #f0f7ff; }
+.lv3 .lv3-pie p, .lv3 .sober-footer .brand small { color: #42597a; opacity: 1; }
+
+/* Menú siempre blanco (como el resto de la página) */
+.lv3 .nav.solid{background:#fffffff7;color:var(--deep);box-shadow:0 4px 20px #0f3d6e14}
+
+/* Hero: video más oscuro para que el texto se lea (sombra fuerte abajo a la izquierda, donde va el texto) */
+.lv3 .hero-media:after{background:linear-gradient(90deg,#081f3aa6 0%,#081f3a59 45%,#081f3a1a 75%),linear-gradient(180deg,#081f3a40 0%,#081f3a26 40%,#0f3d6ee6 100%)}
+@media(max-width:650px){.lv3 .hero-media:after{background:linear-gradient(180deg,#081f3a66 0%,#081f3a73 45%,#0f3d6ef2 100%)}}
+
+/* Testimonios dentro de "Nosotros" */
+.lv3 .personal>.lv3-testimonios{margin-top:24px}
+
+/* Barrefondo más corto */
+.lv3 .clean-layout{display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:clamp(32px,6vw,80px);align-items:center;justify-content:center}
+.lv3 .clean-frame{width:100%;max-width:360px;margin:0;aspect-ratio:800/1422}
+.lv3 .clean-texto{display:flex;flex-direction:column;gap:22px;max-width:480px}
+.lv3 .clean-texto,.lv3 .clean-texto *{text-align:left}
+.lv3 .clean-texto .clean-heading{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin:0;padding:0;width:100%}
+.lv3 .clean-texto .clean-heading>*{margin:0;justify-self:start;align-self:flex-start}
+.lv3 .clean-texto .clean-controls{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin:0;padding:0}
+.lv3 .clean-texto .clean-controls>div{display:flex;flex-wrap:wrap;gap:8px 24px}
+.lv3 .clean-texto .clean-controls p{margin:0}
+@media(max-width:800px){.lv3 .clean-layout{grid-template-columns:1fr;justify-items:center}.lv3 .clean-texto{order:-1;max-width:none}.lv3 .clean-frame{max-width:230px}}
+
+/* Mi cuenta más compacta (sirve a quien ya es cliente) */
+.lv3 .lv3-cuenta-compacta .account-intro{margin-bottom:28px}
+.lv3 .lv3-cuenta-compacta .account-intro h2{font-size:clamp(28px,3vw,40px)}
+.lv3 .lv3-cuenta-compacta .account-features article{padding:14px 0}
+.lv3 .lv3-cuenta-compacta .account-features h3{font-size:20px;margin:8px 0 4px}
+.lv3 .lv3-cuenta-compacta #portalPanel{min-height:0}
+.lv3 .lv3-cuenta-compacta .account-note{margin-top:22px}
+
+/* Título del hero un poco más chico: entra en dos o tres renglones */
+.lv3 .hero h1{font-size:clamp(40px,5.2vw,76px);max-width:20ch}
+@media(max-width:650px){.lv3 .hero h1{font-size:38px}}
+
+/* Hero con una sola idea: sin etiqueta ni "Deslizá" */
+.lv3 .hero-copy>.eyebrow,.lv3 .hero .scroll-cue{display:none}
+.lv3 .hero h1{margin-top:0!important}
+
+/* ===== Color sol + jerarquía tipográfica (2026-11-05) ===== */
+.lv3{--sun:#FFC94A;--sun-dark:#F2B21B}
+
+/* Hero: lo único gigante de la página; la segunda frase en amarillo sol */
+.lv3 .hero h1{font-weight:700;letter-spacing:-.045em;line-height:1.02;font-size:clamp(44px,5.4vw,84px);max-width:22ch}
+.lv3 .hero h1 em{color:var(--sun);background:none}
+.lv3 .hero-sub p{font-size:19px;color:#e6f2fb;max-width:460px}
+@media(max-width:650px){.lv3 .hero h1{font-size:44px}.lv3 .hero-sub p{font-size:16px}}
+
+/* Botón principal en amarillo sol (solo los principales) */
+.lv3 .btn-primary{background:var(--sun);color:var(--abyss);font-weight:700;box-shadow:0 10px 30px #f2b21b40}
+.lv3 .btn-primary:hover{background:var(--sun-dark)}
+.lv3 .btn-primary svg{color:var(--abyss)}
+
+/* Títulos de sección: negrita, un escalón abajo del hero */
+.lv3 main section h2{font-weight:700!important;letter-spacing:-.035em!important;line-height:1.1!important}
+.lv3 main section h3{font-weight:700!important;letter-spacing:-.02em!important}
+
+/* Cuerpo más grande */
+.lv3 .v3-head>p,.lv3 .account-intro>p,.lv3 .personal-lead+p,.lv3 #servicePanel p{font-size:17px!important}
+
+/* Datos clave en amarillo sol */
+.lv3 .lv3-cifras b{color:var(--sun)}
+
+/* Video del hero: solo agua, sin zoom. Degradé azul arriba (menú y título) y velo suave */
+.lv3 .hero-media video{object-position:center;transform:none}
+.lv3 .hero-media:before{content:'';position:absolute;inset:0;height:auto;z-index:1;pointer-events:none;background:linear-gradient(180deg,#0a3d5cb3 0%,#0a3d5c66 35%,#0a3d5c1a 70%,#0a3d5c33 100%)}
+.lv3 .hero-media:after{background:#0a3d5c14}
+
+/* Sin palabras sueltas al final de un renglón */
+.lv3 h1,.lv3 h2,.lv3 h3{text-wrap:balance}
+.lv3 p,.lv3 li,.lv3 summary{text-wrap:pretty}
+.lv3 .hero-sub p{max-width:640px}
+
+/* Catálogo: bajada corta debajo del título; tarjeta de Clorito simple */
+.lv3 .lv3-bajada{margin-top:12px;font-size:18px;color:#dcebf6}
+.lv3 .v3-head:has(.lv3-bajada){grid-template-columns:1fr;margin-bottom:28px}
+.lv3 .v3-advice{justify-content:center}
+.lv3 .v3-advice h3{margin:6px 0 18px}
+
+/* Fondo claro (elegido el 2026-11-05): agua más clara y textos de las secciones en azul oscuro */
+.lv3.fondo-claro{background:#e3f1fa}
+.lv3.fondo-claro .underwater-world{background:linear-gradient(180deg,#f2f9ffd9,#e0f0fbcc 55%,#cfe6f6cc),url('/landing/v3/underwater.webp') center/cover no-repeat}
+.lv3.fondo-claro .water-rays{opacity:.35}
+.lv3.fondo-claro main section:not(.hero):not(.closing) :is(h2,h3,p,li,b,small,span,dd,dt,[role=tab],summary):not(.v3-advice *):not(.v3-product *):not(.v3-service-image *):not(.btn):not(.btn *):not(.portal-preview *):not(.clean-frame *){color:var(--deep)}
+.lv3.fondo-claro main section:not(.hero) [role=tab][aria-selected=true]:not(.portal-preview *){border-bottom-color:var(--deep)}
+.lv3.fondo-claro main section:not(.hero) [role=tablist]{border-color:#0f3d6e33}
+.lv3.fondo-claro .lv3-cifras b{color:var(--blue)!important}
+.lv3.fondo-claro .eyebrow{color:var(--blue)!important}
+
+/* Tarjetas de producto parejas: precio y botón siempre a la misma altura */
+.lv3 .lv3-catalogo{align-items:stretch}
+.lv3 .lv3-catalogo .v3-product{display:flex;flex-direction:column}
+.lv3 .lv3-catalogo .v3-product-body{flex:1;display:flex;flex-direction:column}
+.lv3 .lv3-catalogo .v3-product-body .lv3-precio{margin-top:auto}
+.lv3 .v3-advice{align-items:center;text-align:center}
+.lv3.fondo-claro #servicePanel :is(h3,p,li,span),.lv3.fondo-claro .v3-note{color:var(--deep)!important}
+.lv3.fondo-claro .lv3-bajada{color:var(--deep)}
+
+/* Hero: texto a la izquierda (centrado con la foto), fotos que pasan a la derecha */
+.lv3 .hero-copy{align-self:center;padding-top:16px;padding-bottom:0;display:flex;flex-direction:column;align-items:flex-start}
+.lv3 .hero h1{max-width:16ch}
+.lv3 .hero-sub{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:24px;margin-top:20px}
+.lv3 .hero-tarjetas-wrap{position:absolute;z-index:2;right:max(var(--gutter),calc((100% - var(--max))/2 + var(--gutter)));top:calc(50% + 8px);transform:translateY(-50%);width:min(clamp(270px,25vw,350px),40vh)}
+/* marco redondo y con relieve del catálogo; la foto ocupa todo y el texto es una pastilla chica abajo */
+.lv3 .hero-tarjetas-marco{position:relative;aspect-ratio:4/5;border:1px solid #fff;border-radius:78px 78px 65px 65px / 65px 65px 50px 50px;background:linear-gradient(135deg,#fff,#f3f8fc 65%,#e0edf7);box-shadow:inset 0 3px 3px #fff,inset -4px -5px 12px #b6cfe944,0 4px 0 #c4d9ec,0 6px 0 #9bb9d2,0 20px 26px -12px #082e5588}
+.lv3 .hero-tarjeta{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;pointer-events:none;display:block;padding:11px}
+.lv3 .hero-tarjeta.activa{opacity:1;pointer-events:auto}
+.lv3 .hero-tarjeta img{width:100%;height:100%;object-fit:cover;display:block;border-radius:68px 68px 54px 54px / 54px 54px 40px 40px}
+.lv3 .hero-tarjeta-pie{position:absolute;left:11px;right:11px;bottom:11px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:84px 22px 18px 26px;border-radius:0 0 54px 54px / 0 0 40px 40px;background:linear-gradient(180deg,transparent,#0a3d5c80 55%,#0a3d5ca6);color:#fff}
+.lv3 .hero-tarjeta-pie>span{display:flex;flex-direction:column;gap:1px;min-width:0}
+.lv3 .hero-tarjeta-pie b{font-size:15px;font-weight:700;line-height:1.2;color:#fff}
+.lv3 .hero-tarjeta-pie small{font-size:12px;color:#e6f2fb}
+.lv3 .hero-tarjeta-pie em{flex:none;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:var(--sun);color:#0a3d5c;font-style:normal;font-weight:700;font-size:16px}
+.lv3 .hero-tarjetas-puntos{display:flex;justify-content:center;gap:8px;margin-top:20px;border:0!important}
+.lv3 .hero-tarjetas-puntos button{width:9px;height:9px;padding:0;border-radius:50%;border:0;background:#ffffff80}
+.lv3 .hero-tarjetas-puntos button.activo{background:var(--sun);width:22px;border-radius:6px}
+@media(max-width:900px){.lv3 .hero-tarjetas-wrap{display:none}}
+@media(max-width:650px){.lv3 .hero-copy{align-self:start;padding-top:110px;padding-bottom:0}}
+
+/* Botones de la limpieza legibles sobre fondo claro */
+.lv3 .clean-texto .clean-controls button{color:var(--deep);font-weight:600}
+
+/* Título de la portada en la tipografía de la marca (probando) */
+.lv3 .hero h1{font-family:var(--font-fredoka),var(--font-comfortaa),sans-serif;font-weight:600;letter-spacing:-.02em}
+.lv3 .hero h1 .hero-desde{display:block;margin-top:10px;font-size:.4em;font-weight:600;letter-spacing:0;text-transform:none;color:#fff;white-space:nowrap}
+.lv3 .hero h1{font-size:clamp(54px,7.2vw,108px);line-height:1;max-width:11ch}
+@media(max-width:650px){.lv3 .hero h1{font-size:54px}}
+.lv3 .closing .cierre-logo{width:132px;height:132px;display:block;margin:0 0 22px;filter:drop-shadow(0 10px 24px #0a3d5c66)}
+.agua-cursor{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:45}
+.lv3 .clean-verde{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.lv3 .clean-cloro{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;border:0;border-radius:999px;padding:16px 26px;font-weight:700;font-size:clamp(14px,2.2vw,17px);letter-spacing:.01em;color:#0a3d5c;background:#ffc94a;box-shadow:0 10px 30px #081f3a66;cursor:pointer;animation:lv3-cloro-pulso 2.2s ease-in-out infinite;width:78%;line-height:1.25;text-align:center}
+.lv3 .clean-cloro:hover{background:#ffd873}
+@keyframes lv3-cloro-pulso{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.06)}}
+@media(prefers-reduced-motion:reduce){.lv3 .clean-cloro{animation:none}}
+.lv3 .clean-frame.clean-limpia .clean-done,.lv3 .clean-frame .clean-done{z-index:3}
+.lv3 .clean-pastilla{position:absolute;left:0;top:0;width:56px;height:58px;transform:translate(-50%,-50%);pointer-events:none;z-index:4;display:none;filter:drop-shadow(0 4px 4px #003b5555)}
+.lv3 .clean-frame.con-pastilla{cursor:none}
+.lv3 .clean-frame.con-pastilla .clean-pastilla{display:block}
+.lv3 .clean-done{left:50%!important;top:50%!important;bottom:auto!important;transform:translate(-50%,-50%)!important;text-align:center;font-size:clamp(14px,2.2vw,18px)!important;padding:14px 22px!important;font-weight:600;white-space:nowrap}
+@media(hover:none){.lv3 .clean-pastilla{display:none!important}}
+.lv3 .clean-caida{position:absolute;width:0;height:0;pointer-events:none;z-index:4}
+.lv3 .clean-caida img{position:absolute;left:0;top:0;max-width:none;height:auto;opacity:0;transform-origin:50% 50%}
+.lv3 .clean-caida .cae-arriba{width:56px;margin:-28px 0 0 -28px;animation:lv3-pastilla-cae 1.7s cubic-bezier(.4,0,.8,.5) forwards}
+.lv3 .clean-caida i{position:absolute;left:0;top:0;width:20px;height:20px;border:2px solid #fff;border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.2);animation:lv3-onda-cae 1.6s ease-out forwards}
+.lv3 .clean-caida i:nth-child(1){animation-delay:.3s}.lv3 .clean-caida i:nth-child(2){animation-delay:.55s}.lv3 .clean-caida i:nth-child(3){animation-delay:.8s}
+@keyframes lv3-pastilla-cae{0%{opacity:1;transform:translateY(-26px) scale(1.25);filter:none}25%{opacity:1;transform:scale(.9);filter:none}100%{opacity:0;transform:scale(.15);filter:blur(2px) hue-rotate(-15deg) brightness(.9)}}
+@keyframes lv3-onda-cae{0%{opacity:.9;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(5)}}
+@media(prefers-reduced-motion:reduce){.lv3 .clean-caida{display:none}}
+.lv3 .hero h1{font-size:clamp(34px,4.6vw,66px);max-width:none;line-height:1.05}
+.lv3 .hero h1 .line{display:block;white-space:nowrap}
+.lv3 .hero h1 .line>span{display:inline}
+.lv3 .hero h1 .hero-desde{font-size:.44em}
+.lv3 .hero-sub p{font-size:19px;line-height:1.5;color:#fff}
+.lv3 .hero-sub p>span,.lv3 .hero-sub p>b{display:block}
+.lv3 .hero-sub p>b{color:var(--sun);font-weight:700;font-size:1.08em}
+@media(max-width:650px){.lv3 .hero h1{font-size:clamp(24px,7.3vw,38px)}.lv3 .hero-sub p{font-size:16px}}
+.lv3 .hero-sub{background:#081f3a52;backdrop-filter:blur(10px) saturate(1.2);-webkit-backdrop-filter:blur(10px) saturate(1.2);border:1px solid #ffffff2e;border-radius:22px;padding:20px 26px 24px;margin-top:26px;width:fit-content;max-width:100%;box-shadow:0 18px 50px #081f3a40}
+.lv3 .hero-sub p{margin:0}
+@media(max-width:650px){.lv3 .hero-sub{padding:16px 18px 20px;margin-top:20px}}
+.lv3 .hero h1 .line{overflow:visible;width:max-content;max-width:none}
+
+/* Pausa del video: solo el ícono, abajo a la izquierda, discreto */
+.lv3 .video-pause{left:max(var(--gutter,16px),16px);right:auto;top:auto;bottom:22px!important;width:34px;height:34px;padding:0;display:grid;place-items:center;border:1px solid #ffffff40;border-radius:50%;background:#081f3a40;font-size:13px;line-height:1;opacity:.75;transition:opacity .2s}
+.lv3 .video-pause:hover,.lv3 .video-pause:focus-visible{opacity:1}
+/* "Desde 1989" centrado en el panel */
+.lv3 .hero-sub{align-items:stretch}
+.lv3 .hero-sub .hero-ctas{justify-content:flex-start}
+/* Tarjetas de cloro y service: en el celular van entre el título y el panel */
+.lv3 .hero-tarjetas-movil{display:none}
+@media(max-width:900px){
+  .lv3 .hero-tarjetas-movil{display:block;width:min(58vw,230px);margin:22px 0 4px}
+  .lv3 .hero-tarjetas-movil .hero-tarjetas-puntos{margin-top:14px}
+  .lv3 .hero-tarjetas-movil .hero-tarjeta-pie{padding:46px 12px 12px 14px}
+  .lv3 .hero-tarjetas-movil .hero-tarjeta-pie b{font-size:12.5px}
+  .lv3 .hero-tarjetas-movil .hero-tarjeta-pie small{font-size:10.5px}
+  .lv3 .hero-tarjetas-movil .hero-tarjeta-pie em{width:26px;height:26px;font-size:13px}
+  .lv3 .hero-sub{margin-top:18px}
+}
+.lv3 .hero-tarjetas-puntos button{min-height:0!important;min-width:0}
+@media(max-width:900px){.lv3 .hero-tarjetas-movil{width:min(50vw,200px);margin:16px 0 0}.lv3 .hero-tarjetas-movil .hero-tarjetas-puntos{margin-top:12px}.lv3 .hero-sub{margin-top:14px}}
+@media(max-width:650px){.lv3 .hero-copy{padding-top:96px}}
+
+/* Sello "Desde 1989": avala las tarjetas, en la esquina de arriba a la derecha */
+.lv3 .hero-tarjetas{position:relative}
+.lv3 .hero-sello-aval{position:absolute;z-index:5;top:-34px;right:-30px;width:clamp(96px,8.6vw,128px);transform:rotate(12deg);filter:drop-shadow(0 8px 12px #081f3a55);pointer-events:none}
+@media(max-width:900px){.lv3 .hero-sello-aval{width:70px;top:-22px;right:-18px}}
+.lv3 .sello-svg{display:block;width:100%;height:auto}
+.lv3 .sello-desde{font-family:var(--font-fredoka),var(--font-comfortaa),sans-serif;font-weight:600;font-size:16px;letter-spacing:.3em;fill:#0a3d5c}
+.lv3 .sello-anio{font-family:var(--font-fredoka),var(--font-comfortaa),sans-serif;font-weight:600;font-size:50px;fill:#0a3d5c}
+/* el botón de pausa tiene que ser un círculo perfecto */
+.lv3 .video-pause{box-sizing:border-box;width:34px!important;height:34px!important;min-width:34px;min-height:34px;aspect-ratio:1/1;flex:none}
+
+/* Pausa del video: círculo chico y delicado, abajo en el medio */
+.lv3 .video-pause{left:50%!important;right:auto!important;top:auto!important;bottom:20px!important;transform:translateX(-50%);width:34px!important;height:34px!important;min-width:34px;min-height:0!important;max-height:34px!important;padding:0;display:grid;place-items:center;border-radius:50%;font-size:12px}
+
+/* Cloritos con poses (recortes en /landing/v3/clorito/) */
+
+@keyframes clorito-flota{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+
+.lv3 .clorito-lado{display:block;width:auto;height:auto;max-width:min(190px,45%);max-height:250px;margin-top:26px;filter:drop-shadow(0 10px 10px #081f3a33)}
+.lv3 .v3-service-image.con-clorito{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;min-height:0;overflow:visible;border:0;border-radius:0;box-shadow:none;background:none}
+.lv3 .v3-service-image.con-clorito img{position:relative;width:auto;height:auto;max-width:100%;max-height:360px;object-fit:contain;filter:drop-shadow(0 14px 12px #0f3d6e44)}
+.lv3 .v3-service-image.con-clorito>span{position:static;padding:12px 18px;border-radius:30px;text-align:center}
+.lv3 .closing .cierre-logo{width:auto;height:190px}
+@media(max-width:650px){
+  .lv3 .clorito-lado{max-width:130px;max-height:170px;margin-top:16px}
+  .lv3 .v3-service-image.con-clorito img{max-height:280px}
+  .lv3 .closing .cierre-logo{height:150px}
+}
+
+/* Cierre: Clorito celebrando a la derecha */
+.lv3 .closing .cierre-logo{position:absolute;right:0;top:64px;width:auto;height:clamp(200px,22vw,300px);margin:0;z-index:1}
+@media(max-width:900px){.lv3 .closing .cierre-logo{height:150px;top:34px}}
+/* Los Cloritos de sección (catálogo, etc.) no se mueven */
+.lv3 .clorito-portrait img{animation:none}
+
+/* ===== Tarjetas grandes flotando sobre el agua (7/11) =====
+   El fondo de agua queda visible entre secciones; cada sección es un panel redondeado con sombra suave. */
+.lv3 .sec{position:relative;z-index:1;padding:clamp(18px,2.4vw,34px) 0;background:none}
+.lv3 main .sec>.wrap{width:calc(100% - 48px);max-width:var(--max);box-sizing:border-box;margin:0 auto;padding:clamp(48px,6vw,84px) clamp(22px,5vw,72px);border-radius:40px;border:1px solid #ffffffb3;box-shadow:0 30px 70px -28px #0f3d6e66,0 2px 0 #ffffff99 inset;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.lv3 .personal>.lv3-testimonios{margin-top:64px}
+@media(max-width:650px){
+  .lv3 main .sec>.wrap{width:calc(100% - 20px);border-radius:28px;padding:44px 16px}
+}
+/* agua más presente entre tarjetas (las tarjetas siguen claras para leer) */
+.lv3.fondo-claro .underwater-world{background:linear-gradient(180deg,#a9dcf2b3,#74bfe8b3 55%,#4a9fd4c4),url('/landing/v3/underwater.webp') center/cover no-repeat}
+.lv3 main .sec>.wrap{background-color:#fffffff2}
+.lv3 main .v3-service>.wrap,.lv3 main .questions>.wrap{background-color:#f3faffee}
+.lv3 main .clean>.wrap{background-color:#e6f5fdee}
+.lv3 main .personal>.lv3-testimonios{margin-top:clamp(56px,9.4vw,130px)}
+
+/* ===== Hover: las tarjetas flotan un poco más (solo con mouse; sin movimiento reducido) ===== */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .lv3 main .sec>.wrap{transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease}
+  .lv3 main .sec>.wrap:hover{transform:translateY(-6px);box-shadow:0 44px 90px -30px #0f3d6e88,0 2px 0 #ffffff99 inset}
+  .lv3 .v3-product,.lv3 .lv3-testimonios-grid article{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+  .lv3 .v3-product:hover,.lv3 .lv3-testimonios-grid article:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 30px 56px -18px #1b5fa855}
+  .lv3 .v3-product img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .lv3 .v3-product:hover img{transform:scale(1.06)}
+  .lv3 .btn{transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+  .lv3 .btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px -10px #00b4d899;filter:brightness(1.05)}
+}
+
+/* El velo oscuro del hero viaja con el video (antes cubría todo el alto y oscurecía al bajar) */
+.lv3 .hero-stage{background:none}
+/* Botón de WhatsApp en el header */
+.lv3 .nav .nav-wa{display:inline-flex;align-items:center;gap:12px;margin-left:28px;padding:13px 26px;border-radius:999px;background:#16a34a;color:#fff;font-size:14px;font-weight:700;line-height:1;white-space:nowrap;box-shadow:0 8px 20px -8px #16a34a99;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.lv3 .nav .nav-wa svg{width:20px;height:20px;flex:none}
+.lv3 .nav .nav-wa:hover{background:#15803d;transform:translateY(-2px);box-shadow:0 14px 26px -10px #16a34acc}
+@media(max-width:860px){.lv3 .nav .nav-wa{margin-left:auto;padding:11px 18px;gap:9px}.lv3 .nav .nav-wa-largo{display:none}.lv3 .nav .mobile-menu{margin-left:12px}}
+.lv3 .v3-image img[src*="combo-semanal"]{object-position:50% 40%}
+
+/* Sello "Desde 1989": destello de sol que lo cruza cada tanto */
+.lv3 .sello-destello{animation:sello-destello 5s ease-in-out infinite}
+@keyframes sello-destello{0%{transform:translateX(0) skewX(-18deg)}28%,100%{transform:translateX(330px) skewX(-18deg)}}
+.lv3 .hero-sello-aval{animation:sello-brilla 5s ease-in-out infinite}
+@keyframes sello-brilla{0%,100%{filter:drop-shadow(0 8px 12px #081f3a55)}14%{filter:drop-shadow(0 8px 12px #081f3a55) drop-shadow(0 0 14px #ffe8a3)}}
+@media(prefers-reduced-motion:reduce){.lv3 .sello-destello,.lv3 .hero-sello-aval{animation:none}}
+
+/* ===== Cloro: 3 pasos arriba, botón corto en cada tarjeta, fotos menos recortadas (7/11) ===== */
+.lv3 .lv3-pasos{list-style:none;margin:0 0 38px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.lv3 .lv3-pasos li{position:relative;display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:center;padding:16px 18px;border-radius:20px;background:#eaf5fd;border:1px solid #1b5fa81f}
+.lv3 .lv3-pasos li span{grid-row:1/3;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#1b5fa8;color:#fff;font-weight:700;font-size:17px}
+.lv3 .lv3-pasos li b{font-size:15px;color:var(--deep)}
+.lv3 .lv3-pasos li small{font-size:13px;line-height:1.4;color:var(--muted)}
+.lv3 .lv3-pasos li+li:before{content:'›';position:absolute;left:-15px;top:50%;transform:translateY(-52%);font-size:26px;color:#1b5fa8aa}
+@media(max-width:800px){.lv3 .lv3-pasos{grid-template-columns:1fr;gap:10px}.lv3 .lv3-pasos li+li:before{display:none}}
+.lv3 .v3-image{aspect-ratio:1/1}
+.lv3 .v3-image img{object-position:50% 50%}
+.lv3 .v3-image img[src*="combo-semanal"]{object-position:50% 45%}
+.lv3 .lv3-catalogo .v3-product-body .btn,.lv3 .lv3-catalogo .v3-product-body button{display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.lv3 .lv3-catalogo .v3-product-body button svg{width:18px;height:18px}
+.lv3.fondo-claro main .lv3-pasos li>span{color:#fff}
+
+/* ===== Service: un solo bloque con dos tarjetas parejas y Clorito (7/11) ===== */
+.lv3 .lv3-service-unico{display:grid;grid-template-columns:minmax(200px,300px) 1fr;gap:clamp(18px,3vw,40px);align-items:end}
+.lv3 .lv3-service-clorito{display:flex;justify-content:center;align-self:end}
+.lv3 .lv3-service-clorito img{height:auto;max-height:400px;width:auto;max-width:100%;filter:drop-shadow(0 18px 22px #0f3d6e33)}
+.lv3 .lv3-service-tarjetas{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.lv3 .lv3-service-card{display:flex;flex-direction:column;padding:28px 26px;border-radius:26px;background:#f2f9ff;border:1px solid #1b5fa81f;box-shadow:0 18px 40px -26px #0f3d6e66}
+.lv3 .lv3-service-card h3{font-size:26px;margin:8px 0 2px}
+.lv3 .lv3-service-frecuencia{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.lv3 .lv3-service-card p{font-size:15px;line-height:1.7;color:var(--muted)}
+.lv3 .lv3-service-card ul{margin:16px 0 22px;padding:0;list-style:none;display:grid;gap:8px;font-size:14px}
+.lv3 .lv3-service-card li{position:relative;padding-left:22px}
+.lv3 .lv3-service-card li:before{content:'✓';position:absolute;left:0;color:#1b5fa8;font-weight:700}
+.lv3 .lv3-service-card .btn{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:10px}
+.lv3 .lv3-service-card .btn svg{width:18px;height:18px}
+.lv3 .lv3-service-nota{margin-top:26px;text-align:center}
+@media(max-width:900px){
+  .lv3 .lv3-service-unico{grid-template-columns:1fr}
+  .lv3 .lv3-service-clorito img{max-height:240px}
+  .lv3 .lv3-service-tarjetas{grid-template-columns:1fr}
+}
+.lv3 .lv3-service-card .btn{flex-direction:row;flex-wrap:nowrap;white-space:nowrap;width:auto;height:auto;min-height:0;padding:14px 22px;line-height:1.2;justify-content:center}
+.lv3 .lv3-service-card .btn svg{flex:none}
+
+/* ===== Revisión 7/11: Mirá lo que hace el cloro (centrado), testimonios, preguntas, cierre, footer ===== */
+.lv3 .clean-cabecera{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;max-width:640px;margin:0 auto 34px}
+.lv3 .clean-cabecera h2{margin:0}
+.lv3 .clean-cabecera p{font-size:16px;line-height:1.7;margin:0}
+.lv3 .clean-layout{grid-template-columns:1fr;justify-items:center;gap:18px}
+.lv3 .clean-layout .clean-frame{width:min(100%,380px)}
+.lv3 .clean-layout .clean-controls{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.lv3 .clean-layout .clean-controls p{margin:0;font-size:14px}
+.lv3 .clean-layout .clean-controls button{color:var(--deep);font-weight:600;font-size:14px}
+.lv3 .clean-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:30px}
+.lv3 .clean-cta .btn{display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+.lv3 .clean-cta .btn svg{width:18px;height:18px}
+.lv3 .lv3-testimonios-cabecera{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.lv3 .lv3-testimonios-cabecera img{height:auto;max-height:150px;width:auto;margin-bottom:34px}
+@media(max-width:700px){.lv3 .lv3-testimonios-cabecera img{display:none}}
+.lv3 .question-grid{grid-template-columns:1fr;max-width:820px;margin-inline:auto}
+.lv3 .lv3-preguntas-cabecera{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:10px}
+.lv3 .lv3-preguntas-cabecera img{height:auto;width:auto;max-height:170px}
+.lv3 .lv3-preguntas-cabecera h2{margin:0}
+.lv3 .closing .cierre-logo{top:50%;transform:translateY(-50%)}
+@media(max-width:900px){.lv3 .closing .cierre-logo{top:50%}}
+.lv3 .lv3-pie-links a[href*="instagram"] svg{color:#d6336c}
+.lv3 main section.sec{border-top:0;border-bottom:0}
+
+/* ===== Franja de confianza, barra del celu, zonas, calculadora, aviso (7/11) ===== */
+.lv3 .lv3-confianza{position:relative;z-index:2;padding:0 var(--gutter);margin-top:-34px;margin-bottom:6px}
+.lv3 .lv3-confianza ul{list-style:none;margin:0 auto;padding:16px 28px;max-width:860px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;border-radius:999px;background:#ffffffee;border:1px solid #ffffffb3;box-shadow:0 20px 44px -26px #0f3d6e88;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.lv3 .lv3-confianza li{font-size:14px;color:var(--deep);white-space:nowrap}
+.lv3 .lv3-confianza li b{font-size:18px;color:#1b5fa8}
+.lv3 .lv3-confianza li+li{position:relative}
+.lv3 .lv3-confianza li+li:before{content:'';position:absolute;left:-18px;top:15%;height:70%;width:1px;background:#1b5fa833}
+@media(max-width:700px){.lv3 .lv3-confianza{margin-top:-20px}.lv3 .lv3-confianza ul{border-radius:26px;flex-direction:column;align-items:center;gap:6px;padding:14px 18px}.lv3 .lv3-confianza li+li:before{display:none}}
+
+.lv3 .lv3-barra-pedir{display:none}
+@media(max-width:860px){
+  .lv3 .nav .nav-wa{display:none}
+  .lv3 .nav .mobile-menu{margin-left:auto}
+  .lv3 .lv3-barra-pedir{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,#ffffff00,#ffffffe6 40%)}
+  .lv3 .lv3-barra-pedir .btn{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 20px;font-size:16px;box-shadow:0 12px 26px -10px #0f3d6e88}
+  .lv3 .lv3-barra-pedir .btn svg{width:22px;height:22px}
+  .lv3 footer{padding-bottom:84px}
+}
+
+.lv3 .lv3-zonas{margin-top:22px}
+.lv3 .lv3-zonas-titulo{font-weight:700;font-size:17px;color:var(--deep);margin:0 0 4px}
+.lv3 .lv3-zonas .coverage-line{margin:0 0 12px}
+.lv3 .lv3-zonas-chips{display:flex;flex-wrap:wrap;gap:10px}
+.lv3 .lv3-zona{display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;background:#eaf5fd;border:1px solid #1b5fa833;color:var(--deep);font-size:14px;font-weight:600;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.lv3 .lv3-zona:hover{background:#1b5fa8;color:#fff;transform:translateY(-2px);box-shadow:0 10px 20px -10px #1b5fa8aa}
+.lv3 .lv3-zona-otra{background:transparent;border-style:dashed}
+
+.lv3 .lv3-calc{display:grid;grid-template-columns:1fr 1.3fr;gap:20px 36px;align-items:center;margin-top:44px;padding:30px 34px;border-radius:30px;background:#eaf5fd;border:1px solid #1b5fa81f}
+.lv3 .lv3-calc-texto h3{font-size:26px;margin:6px 0 8px}
+.lv3 .lv3-calc-texto p{margin:0;font-size:15px;line-height:1.6;color:var(--muted)}
+@media(max-width:800px){.lv3 .lv3-calc{grid-template-columns:1fr;padding:24px 18px}}
+
+.lv3 .lv3-aviso{position:fixed;top:0;left:0;right:0;z-index:70;height:38px;display:flex;align-items:center;justify-content:center;gap:12px;padding:0 44px;background:#ffc94a;color:#0a3d5c;font-size:14px;font-weight:600;text-align:center}
+.lv3 .lv3-aviso p{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lv3 .lv3-aviso button{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;font-size:22px;line-height:1;color:#0a3d5c;padding:4px 8px}
+.lv3 .nav{top:calc(14px + var(--aviso-alto,0px)) !important}
+@media(max-width:600px){.lv3 .lv3-aviso{font-size:12.5px;padding:0 36px}.lv3 .lv3-aviso p{white-space:normal;line-height:1.2}}
+
+/* ===== Ajustes de la revisión (7/11, 2ª vuelta) ===== */
+/* Pasos del cloro: ícono en círculo, "Paso N" y texto (nada de números sobre fondo azul) */
+.lv3 .lv3-pasos{gap:22px}
+.lv3 .lv3-pasos li{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:22px 22px 20px;background:#fff;border:1px solid #1b5fa826;box-shadow:0 16px 34px -24px #0f3d6e88}
+.lv3 .lv3-pasos li i{display:grid;place-items:center;width:52px;height:52px;margin-bottom:10px;border-radius:16px;background:linear-gradient(145deg,#4a9fd4,#1b5fa8);color:#fff;font-style:normal}
+.lv3 .lv3-pasos li i svg{width:26px;height:26px}
+.lv3 .lv3-pasos li>span{grid-row:auto;display:block;width:auto;height:auto;border-radius:0;background:none;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1b5fa8!important}
+.lv3 .lv3-pasos li b{font-size:19px}
+.lv3 .lv3-pasos li small{font-size:14px}
+.lv3.fondo-claro main .lv3-pasos li>span{color:#1b5fa8!important;background:none}
+.lv3 .lv3-pasos li+li:before{content:'';position:absolute;left:-22px;top:46px;width:22px;height:2px;background:repeating-linear-gradient(90deg,#1b5fa888 0 5px,transparent 5px 9px);transform:none}
+@media(max-width:800px){.lv3 .lv3-pasos li{flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:14px}.lv3 .lv3-pasos li i{margin:0}}
+
+/* Calculadora: campos centrados, resultado a la derecha */
+.lv3 .lv3-calc{align-items:center}
+.lv3 .lv3-service-card h3{margin-top:8px}
+.lv3 .v3-service h2 sup{font-size:.5em;vertical-align:super;margin-left:2px}
+
+/* Datos de confianza dentro de Nosotros (sin los números gigantes) */
+.lv3 .lv3-datos{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.lv3 .lv3-datos li{padding:9px 16px;border-radius:999px;background:#eaf5fd;border:1px solid #1b5fa826;font-size:14px;color:var(--deep)}
+.lv3 .lv3-datos li b{color:#1b5fa8}
+
+/* Preguntas: Clorito a la izquierda, centrado frente a la lista */
+.lv3 .question-grid{max-width:1000px;grid-template-columns:minmax(150px,260px) 1fr;column-gap:clamp(24px,5vw,64px);align-items:center}
+.lv3 .lv3-preguntas-cabecera{grid-column:1/-1;margin-bottom:18px}
+.lv3 .lv3-preguntas-clorito{display:flex;justify-content:center;align-items:center}
+.lv3 .lv3-preguntas-clorito img{height:auto;width:auto;max-height:260px;max-width:100%}
+@media(max-width:800px){.lv3 .question-grid{grid-template-columns:1fr}.lv3 .lv3-preguntas-clorito{display:none}}
+.lv3 .clean-cta-titulo{margin:30px 0 0;text-align:center;font-weight:700;font-size:18px;color:var(--deep)}
+.lv3 .clean-cta{margin-top:14px}
+.lv3 .clean-layout .clean-controls p{max-width:340px;font-weight:600;color:var(--deep)}
+
+/* ===== Ronda 3: resultado de la calculadora ordenado; tarjetas de service y pasos se levantan al pasar el mouse ===== */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .lv3 .lv3-service-card,.lv3 .lv3-pasos li{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+  .lv3 .lv3-service-card:hover,.lv3 .lv3-pasos li:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 30px 56px -18px #1b5fa855}
+}
+
+/* Combo y granulado: el producto queda más abajo en el marco (menos madera abajo) */
+.lv3 .v3-image img[src*="combo-semanal"],.lv3 .v3-image img[src*="cloro-granulado"]{object-position:50% 0%}
+
+/* ===== Cinta de mensajes (reemplaza al aviso fijo) ===== */
+.lv3 .lv3-aviso{height:36px;padding:0 36px 0 0;justify-content:flex-start;overflow:hidden;transition:transform .35s ease}
+.lv3 .lv3-aviso.oculto{transform:translateY(-100%)}
+.lv3 .nav{transition:top .35s ease}
+.lv3 .lv3-aviso-pista{display:flex;width:max-content;animation:lv3-cinta 40s linear infinite}
+.lv3 .lv3-aviso:hover .lv3-aviso-pista{animation-play-state:paused}
+.lv3 .lv3-aviso-pista ul{display:flex;margin:0;padding:0;list-style:none;flex:none}
+.lv3 .lv3-aviso-pista li{white-space:nowrap;padding:0 28px;line-height:36px;font-size:14px;font-weight:600}
+.lv3 .lv3-aviso-pista li:after{content:'•';margin-left:56px;opacity:.5}
+@keyframes lv3-cinta{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.lv3 .lv3-aviso-pista{animation:none}.lv3 .lv3-aviso-pista ul[aria-hidden]{display:none}}
+@media(max-width:600px){.lv3 .lv3-aviso{font-size:13px}.lv3 .lv3-aviso-pista li{line-height:36px}}
+
+/* ===== Mapa de zonas ===== */
+.lv3 .lv3-mapa{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;margin-top:10px}
+.lv3 .lv3-mapa svg{width:100%;max-width:420px;height:auto;border-radius:20px;overflow:hidden}
+.lv3 .m-rio{fill:#bfe3f7}.lv3 .m-tierra{fill:#e3ecf3}.lv3 .m-caba{fill:#cfd9e2}
+.lv3 .m-zona{fill:#4a9fd4;stroke:#fff;stroke-width:3;stroke-linejoin:round}
+.lv3 .m-num{fill:#0f3d6e}.lv3 .m-num-txt{fill:#fff;font-size:12px;font-weight:700;text-anchor:middle}
+.lv3 .m-rio-txt{fill:#1b5fa8;font-size:11px;font-style:italic;text-anchor:middle;opacity:.7}
+.lv3 .m-caba-txt{fill:#6b7f90;font-size:10px;font-weight:700;text-anchor:middle}
+.lv3 .lv3-mapa-lista{margin:0;padding:0;list-style:none;counter-reset:z;display:grid;gap:8px}
+.lv3 .lv3-mapa-lista li{counter-increment:z;display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
+.lv3 .lv3-mapa-lista li:before{content:counter(z);display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#0f3d6e;color:#fff;font-size:12px;font-weight:700;flex:none}
+.lv3 .lv3-mapa-nota{margin:10px 0 0;font-size:13px;opacity:.75}
+@media(max-width:600px){.lv3 .lv3-mapa{grid-template-columns:1fr}}
+.lv3 .lv3-aviso button{background:#ffc94a;height:100%;top:0;transform:none;right:0}
+
+/* ===== Ronda 3: "Mirá lo que hace el cloro" en dos columnas ===== */
+.lv3 .clean-layout{grid-template-columns:1fr minmax(240px,300px);justify-items:stretch;gap:clamp(28px,6vw,72px);align-items:center}
+.lv3 .clean-layout .clean-frame{width:100%;max-width:300px;justify-self:center}
+.lv3 .clean-texto{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:520px;justify-self:end}
+.lv3 .clean-texto,.lv3 .clean-texto *{text-align:left}
+.lv3 .clean-texto h2,.lv3 .clean-texto p{margin:0}
+.lv3 .clean-texto .clean-controls{align-items:flex-start;margin-top:6px}
+.lv3 .clean-texto .clean-cta-titulo{margin:14px 0 0;font-weight:700;font-size:18px}
+.lv3 .clean-texto .clean-cta{justify-content:flex-start;margin-top:0}
+@media(max-width:800px){.lv3 .clean-layout{grid-template-columns:1fr;justify-items:center}.lv3 .clean-texto{justify-self:stretch;max-width:none}.lv3 .clean-layout .clean-frame{max-width:240px}}
+
+/* ===== Calculadora: medidas angostas y centradas, resultados debajo y el pedido al final ===== */
+.lv3 .lv3-calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:20px 36px;align-items:start}
+@media(max-width:800px){.lv3 .lv3-calc{grid-template-columns:1fr}}
+.lv3 .lv3-zonas-fila{grid-column:1/-1;border-top:1px solid #1b5fa826;padding-top:26px}
+.lv3 .lv3-zonas-fila .lv3-mapa{grid-template-columns:minmax(0,520px) auto;justify-content:center;gap:32px}
+@media(max-width:700px){.lv3 .lv3-zonas-fila .lv3-mapa{grid-template-columns:1fr}}
+
+/* ===== Ronda 4 ===== */
+/* cinta: sin hueco al reiniciar (4 copias, se desplaza la mitad) */
+.lv3 .lv3-aviso-pista{animation-duration:60s}
+/* título del catálogo en una sola línea */
+.lv3 #cloro .v3-head h2{white-space:nowrap;font-size:clamp(26px,5.2vw,60px)}
+/* calculadora: título en negrita y texto centrado en su mitad */
+.lv3 .lv3-calc-texto{align-self:center;text-align:center}
+.lv3 .lv3-calc-texto h3{font-weight:800}
+.lv3 .lv3-calc-texto p{margin-inline:auto;max-width:340px}
+/* nosotros: contenido centrado verticalmente */
+.lv3 .personal-grid{align-items:center}
+/* mapa más vivo */
+.lv3 .lv3-mapa-svg{box-shadow:0 22px 44px -22px #0f3d6e88;background:#f2f8fc}
+.lv3 .m-rio{fill:url(#mz-agua)}
+.lv3 .m-tierra{fill:#e7eef5}
+.lv3 .m-zona{fill:url(#mz-zona);filter:url(#mz-sombra);transition:transform .3s ease,filter .3s;transform-box:fill-box;transform-origin:center;cursor:pointer}
+.lv3 .m-zona:hover,.lv3 g.activa .m-zona{transform:scale(1.08);fill:#ffc94a}
+.lv3 g.activa .m-num{fill:#0a3d5c}
+.lv3 .m-pulso{fill:#fff;opacity:.6;transform-box:fill-box;transform-origin:center;animation:lv3-mz-pulso 2.4s ease-out infinite;pointer-events:none}
+.lv3 .m-num{pointer-events:none}.lv3 .m-num-txt{pointer-events:none}
+.lv3 .m-ola{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;opacity:.7;animation:lv3-mz-ola 5s ease-in-out infinite}
+.lv3 .m-ola2{animation-delay:1.2s}.lv3 .m-ola3{animation-delay:2.4s}
+@keyframes lv3-mz-pulso{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.2);opacity:0}}
+@keyframes lv3-mz-ola{50%{transform:translateX(8px)}}
+.lv3 .lv3-mapa-lista li{padding:6px 14px 6px 6px;border-radius:999px;transition:background .25s,transform .25s;cursor:default}
+.lv3 .lv3-mapa-lista li.activa{background:#ffc94a;transform:translateX(4px)}
+@media(prefers-reduced-motion:reduce){.lv3 .m-pulso,.lv3 .m-ola{animation:none}}
+/* "Mirá lo que hace el cloro": todo al medio, estado y reinicio pegados a la pileta */
+.lv3 .clean-layout{grid-template-columns:minmax(0,420px) 280px;grid-template-rows:auto auto;justify-content:center;gap:12px clamp(28px,5vw,64px);align-items:center}
+.lv3 .clean-texto{grid-row:1/3;justify-self:end}
+.lv3 .clean-layout .clean-frame{grid-column:2;grid-row:1;max-width:280px;align-self:end}
+.lv3 .clean-layout .clean-controls{grid-column:2;grid-row:2;align-self:start;align-items:center;text-align:center;margin:0}
+.lv3 .clean-layout .clean-controls p{text-align:center}
+.lv3 .clean-layout .clean-controls button{text-align:center}
+@media(max-width:800px){.lv3 .clean-layout{grid-template-columns:1fr;grid-template-rows:auto}.lv3 .clean-texto{grid-row:auto;justify-self:stretch}.lv3 .clean-layout .clean-frame,.lv3 .clean-layout .clean-controls{grid-column:1;grid-row:auto}}
+.lv3 .lv3-calc-texto h3{font-family:Inter,"Inter Fallback",system-ui,sans-serif;font-weight:800;letter-spacing:-.01em}
+
+/* ===== Mapa real del GBA ===== */
+.lv3 .m-otro{fill:#e3ebf2;stroke:#fff;stroke-width:2;stroke-linejoin:round}
+.lv3 .m-zona{stroke:#fff;stroke-width:2.5;stroke-linejoin:round;filter:none;transform:none!important}
+.lv3 .m-zona:hover,.lv3 .m-zona.activa{fill:#ffc94a;transform:none!important}
+.lv3 g.activa .m-num{fill:#0a3d5c}
+.lv3 .m-rio-txt{font-size:22px;text-anchor:end}
+.lv3 .m-num-txt{font-size:18px}
+.lv3 .lv3-zonas-fila .lv3-mapa{grid-template-columns:minmax(0,640px) auto}
+.lv3 .m-rio-txt{font-size:20px;opacity:.8}.lv3 .lv3-zonas-fila .lv3-mapa{grid-template-columns:minmax(0,680px) auto}.lv3 .lv3-mapa-svg{max-width:680px}
+.lv3 .lv3-zonas-fila .lv3-mapa-svg{width:680px;max-width:100%}
+
+/* Botones azules: se ponen amarillos al pasar el mouse */
+.lv3 .btn-blue:hover,.lv3 .btn-blue:focus-visible{background:#ffc94a;color:#0a3d5c;box-shadow:0 14px 30px -10px #ffb300aa}
+.lv3 .btn-blue:hover svg,.lv3 .btn-blue:focus-visible svg{color:#0a3d5c;fill:currentColor}
+.lv3 .m-agua{fill:url(#mz-agua);pointer-events:none}
+.lv3 .m-delta{fill:#e3ebf2;pointer-events:none}
+
+/* Celu: el header (y la cinta) no tapan el título del hero */
+@media(max-width:650px){
+  .lv3 .hero-copy{padding-top:calc(88px + var(--aviso-alto,0px));transition:padding-top .35s ease}
+  .lv3 .nav .brand-letras{width:76px;height:auto}
+  .lv3 .nav{padding-top:8px;padding-bottom:8px}
+}
+
+/* Carrito por WhatsApp: agregar, cantidad, pastilla fija y pedido */
+.lv3 .v3-product .lv3-agregar{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;margin-top:18px;padding:0;border:0;border-radius:999px;background:#1b5fa8;color:#fff;font-size:14px;font-weight:700;transition:background .25s,color .25s}
+.lv3 .v3-product .lv3-agregar span{font-size:20px;line-height:1}
+.lv3 .v3-product .lv3-agregar:hover,.lv3 .v3-product .lv3-agregar:focus-visible{background:#ffc94a;color:#0a3d5c}
+.lv3 .lv3-cantidad{display:inline-flex;align-items:center;justify-content:space-between;gap:6px;min-height:46px;padding:4px;border-radius:999px;background:#e4f0fa;color:#0f3d6e}
+.lv3 .v3-product .lv3-cantidad{display:flex;width:100%;margin-top:18px}
+.lv3 .lv3-cantidad button,.lv3 .v3-product .lv3-cantidad button{width:38px;height:38px;min-height:0;margin:0;padding:0;border:0;border-radius:50%;background:#1b5fa8;color:#fff;font-size:22px;line-height:1;display:grid;place-items:center}
+.lv3 .lv3-cantidad output{min-width:34px;text-align:center;font-weight:800;font-size:17px}
+.lv3 .lv3-carrito-pastilla{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:60}
+.lv3 .lv3-carrito-pastilla .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 22px;font-size:15px;box-shadow:0 12px 26px -10px #0f3d6e88}
+.lv3 .lv3-carrito-pastilla svg{width:22px;height:22px;flex:none}
+.lv3 .lv3-carrito-dialog{max-width:460px;max-height:92svh;overflow:auto}
+.lv3 .lv3-carrito-dialog h2{font-size:28px;margin:0 0 16px}
+.lv3 .lv3-carrito-lista{list-style:none;margin:0;padding:0}
+.lv3 .lv3-carrito-lista li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.lv3 .lv3-carrito-lista b{display:block;font-size:14px;line-height:1.3}
+.lv3 .lv3-carrito-lista small{color:var(--muted);font-size:12px}
+.lv3 .lv3-carrito-total{display:flex;justify-content:flex-start;gap:12px;align-items:baseline;margin:14px 0 6px;font-size:14px}
+.lv3 .lv3-carrito-total b{font-size:24px;color:var(--deep)}
+.lv3 .lv3-carrito-dialog .btn{width:100%;justify-content:center;margin-top:8px}
+.lv3 .lv3-carrito-error{color:#b3261e;font-size:13px;min-height:1.2em;margin:6px 0 0}
+.lv3 .lv3-carrito-vaciar{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);font-size:13px;text-decoration:underline}
+
+/* Celu: catálogo en 2 columnas, pasos en una fila corta y pastilla del pedido a lo ancho */
+@media(max-width:700px){
+  .lv3 .lv3-zonas-fila .lv3-mapa{grid-template-columns:1fr;gap:16px}
+  .lv3 .lv3-zonas-fila .lv3-mapa-svg{width:100%}
+  .lv3 .lv3-zonas-fila .lv3-mapa-lista{grid-template-columns:1fr 1fr;gap:6px 10px}
+  .lv3 .lv3-mapa-lista li{font-size:14px;padding-right:6px}
+}
+@media(max-width:650px){
+  .lv3 .closing .cierre-logo{top:22px;right:6px;transform:none;height:104px}
+  .lv3 #cloro .v3-head h2{white-space:normal;font-size:28px}
+  .lv3 .lv3-carrito-pastilla{left:0;right:0;bottom:0;transform:none;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,#ffffff00,#ffffffe6 40%)}
+  .lv3 .lv3-carrito-pastilla .btn{width:100%;justify-content:center}
+  .lv3 .lv3-pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .lv3 .lv3-pasos li{display:block;padding:12px 6px;text-align:center}
+  .lv3 .lv3-pasos li small,.lv3 .lv3-pasos li span{display:none}
+  .lv3 .lv3-pasos li i{margin:0 auto 6px}
+  .lv3 .lv3-pasos li b{font-size:12px;line-height:1.25;display:block}
+  .lv3 .v3-product-grid.lv3-catalogo{grid-template-columns:1fr 1fr;gap:12px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-image{aspect-ratio:1/1}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-image>span{top:8px;left:8px;padding:5px 9px;font-size:10px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product-body{padding:12px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product h3{font-size:16px;margin:8px 0}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product-body small{font-size:9px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product p:not(.lv3-precio){display:none}
+  .lv3 .v3-product-grid.lv3-catalogo .lv3-precio{display:block}
+  .lv3 .v3-product-grid.lv3-catalogo .lv3-precio b{display:block;font-size:18px}
+  .lv3 .v3-product-grid.lv3-catalogo .lv3-precio span{font-size:11px}
+  .lv3 .v3-product .lv3-agregar,.lv3 .v3-product .lv3-cantidad{margin-top:10px;min-height:42px;font-size:13px}
+  .lv3 .v3-product .lv3-cantidad button{width:34px;height:34px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product{display:flex;flex-direction:column;border-radius:20px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product-body{flex:1;display:flex;flex-direction:column}
+  .lv3 .v3-product-grid.lv3-catalogo .lv3-precio{margin-top:auto}
+}
+
+.lv3 .closing .eyebrow{color:#b9e3ff !important}
+
+/* cinta: se frena con el mouse encima o con el foco adentro */
+.lv3 .lv3-aviso:hover .lv3-aviso-pista,.lv3 .lv3-aviso:focus-within .lv3-aviso-pista{animation-play-state:paused !important}
+
+.lv3 .lv3-obligatorio{color:#b3261e;font-weight:700}
+.lv3 .lv3-carrito-dialog .lv3-carrito-enviar:disabled{opacity:.45;cursor:not-allowed;background:#1b5fa8;color:#fff;transform:none;box-shadow:none}
+
+/* Clorito del cierre: más chico y algo transparente */
+.lv3 .closing .cierre-logo{height:clamp(150px,16vw,215px);opacity:.7}
+@media(max-width:900px){.lv3 .closing .cierre-logo{height:110px}}
+@media(max-width:650px){.lv3 .closing .cierre-logo{height:84px}}
+
+/* Pedido: lista con foto, resumen y datos de entrega */
+.lv3 .lv3-carrito-dialog{max-width:520px;width:calc(100% - 24px);padding:26px 24px}
+.lv3 .lv3-carrito-cabeza{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-right:34px}
+.lv3 .lv3-carrito-cabeza svg{width:22px;height:22px;color:#1b5fa8;flex:none}
+.lv3 .lv3-carrito-cabeza h2{font-size:22px;margin:0}
+.lv3 .lv3-carrito-cabeza span{margin-left:auto;font-size:13px;color:var(--muted)}
+.lv3 .lv3-carrito-lista li{align-items:flex-start;gap:14px;padding:16px 0}
+.lv3 .lv3-carrito-lista img{width:76px;height:76px;border-radius:14px;object-fit:cover;flex:none;background:#fff}
+.lv3 .lv3-carrito-dato{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.lv3 .lv3-carrito-dato b{font-size:16px}
+.lv3 .lv3-carrito-dato small{font-size:12px}
+.lv3 .lv3-carrito-dato>span{font-size:13px;color:var(--muted)}
+.lv3 .lv3-carrito-dato .lv3-cantidad{align-self:flex-start;margin-top:6px;min-height:38px}
+.lv3 .lv3-carrito-dato .lv3-cantidad button{width:30px;height:30px;font-size:18px}
+.lv3 .lv3-carrito-linea{font-size:16px;white-space:nowrap}
+.lv3 .lv3-carrito-resumen{margin:6px 0 4px;display:grid;gap:10px}
+.lv3 .lv3-carrito-resumen div{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--muted)}
+.lv3 .lv3-carrito-resumen dd{margin:0;font-weight:700;color:var(--deep)}
+.lv3 .lv3-carrito-resumen .gratis{color:#1d7a4a}
+.lv3 .lv3-carrito-resumen .total{padding-top:12px;border-top:1px solid var(--line);font-size:18px;color:var(--deep);font-weight:700}
+.lv3 .lv3-carrito-resumen .total dd{font-size:24px}
+.lv3 .lv3-carrito-sub{font-size:16px;font-weight:700;margin:18px 0 4px}
+.lv3 .lv3-carrito-dialog .field input{border-radius:999px;padding-left:18px}
+.lv3 .lv3-carrito-dialog .btn svg{width:18px;height:18px;margin-right:8px;flex:none}
+
+/* Pedido: cantidad abajo del total de cada línea, total más chico */
+.lv3 .lv3-carrito-lista li{align-items:stretch}
+.lv3 .lv3-carrito-der{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;gap:8px;flex:none}
+.lv3 .lv3-carrito-dato{justify-content:flex-start}
+.lv3 .lv3-carrito-der .lv3-cantidad{margin:0;min-height:36px}
+.lv3 .lv3-carrito-der .lv3-cantidad button{width:28px;height:28px;font-size:17px}
+.lv3 .lv3-carrito-resumen .total{font-size:16px}
+.lv3 .lv3-carrito-resumen .total dd{font-size:20px}
+.lv3 .lv3-carrito-dialog .lv3-carrito-enviar{margin-bottom:0}
+
+/* Foto del combo: el contenido queda más abajo y centrado */
+.lv3 img[src*="cloro-combo-semanal"]{object-position:50% 18%}
+
+/* Cierre: Clorito relajado grande, opaco, con halo celeste, junto al texto */
+.lv3 .closing .cierre-logo{opacity:1;height:clamp(230px,26vw,340px);right:clamp(24px,9vw,170px);filter:drop-shadow(0 0 34px #4a9fd4cc) drop-shadow(0 14px 22px #081f3a77)}
+@media(max-width:900px){.lv3 .closing .cierre-logo{height:150px;right:12px}}
+@media(max-width:650px){.lv3 .closing .cierre-logo{height:104px;right:6px}}
+
+.lv3 .lv3-carrito-acciones{display:flex;align-items:center;gap:8px}
+.lv3 .lv3-carrito-lista .lv3-quitar{width:34px;height:34px;display:grid;place-items:center;padding:0;border:1px solid #b3261e55;border-radius:50%;background:#fff;color:#b3261e;transition:background .2s,color .2s}
+.lv3 .lv3-carrito-lista .lv3-quitar svg{width:16px;height:16px}
+.lv3 .lv3-carrito-lista .lv3-quitar:hover,.lv3 .lv3-carrito-lista .lv3-quitar:focus-visible{background:#b3261e;color:#fff}
+
+/* Cierre: la bajada se lee sobre la foto */
+.lv3 .closing p{color:#fff;font-size:clamp(18px,1.7vw,22px);font-weight:500;text-shadow:0 2px 14px #081f3acc,0 0 3px #081f3a99}
+
+.lv3 .lv3-carrito-total-chico{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 4px;font-size:14px;color:var(--muted)}
+.lv3 .lv3-carrito-total-chico b{font-size:20px;color:var(--deep)}
+.lv3 .lv3-carrito-dialog>.btn{margin-top:14px}
+
+/* Botón de enviar pedido: pulso que llama la atención */
+.lv3 .lv3-llama{position:relative;overflow:hidden;background:#16a34a !important;color:#fff !important;animation:lv3-pulso 2s ease-out infinite}
+.lv3 .lv3-llama:hover,.lv3 .lv3-llama:focus-visible{background:#ffc94a !important;color:#0a3d5c !important;animation:none}
+.lv3 .lv3-llama:after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,#ffffff77,transparent);transform:skewX(-20deg);animation:lv3-brillo 3s ease-in-out infinite}
+@keyframes lv3-pulso{0%{box-shadow:0 0 0 0 #16a34aaa}70%{box-shadow:0 0 0 16px #16a34a00}100%{box-shadow:0 0 0 0 #16a34a00}}
+@keyframes lv3-brillo{0%,55%{left:-60%}100%{left:130%}}
+@media(prefers-reduced-motion:reduce){.lv3 .lv3-llama,.lv3 .lv3-llama:after{animation:none}}
+
+/* Pastillas de abajo del cierre: mismo tamaño, centradas */
+.lv3 .lv3-condiciones{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));max-width:520px}
+.lv3 .lv3-condiciones li{text-align:center;font-size:14px}
+
+/* Celu: hero que entra en pantalla, barra que aparece al bajar y más aire entre secciones */
+.lv3 .lv3-barra-pedir{transition:transform .3s ease,opacity .3s ease}
+@media(max-width:650px){
+  .lv3 .lv3-barra-pedir.oculta{transform:translateY(110%);opacity:0;pointer-events:none}
+  .lv3 .hero-tarjetas-movil{width:min(42vw,165px);margin:12px 0 0}
+  .lv3 .hero-tarjetas-movil .hero-tarjetas-puntos{margin-top:10px}
+  .lv3 .hero-sub{margin-top:12px;padding:14px 16px 16px;gap:12px}
+  .lv3 .sec{padding:34px 14px}
+  .lv3 .sec>.wrap{padding:34px 22px}
+  .lv3 .closing{margin-top:36px}
+  .lv3 .lv3-pasos{margin-bottom:30px;gap:10px}
+  .lv3 .v3-product-grid.lv3-catalogo{gap:16px}
+  .lv3 .v3-head{margin-bottom:26px}
+  .lv3 .lv3-condiciones{grid-template-columns:1fr 1fr;gap:10px}
+  .lv3 .lv3-condiciones li{font-size:13px;padding:10px 12px}
+}
+
+@media(max-width:650px){.lv3 footer{padding-bottom:104px}}
+
+/* ── Celu, ronda 3 ───────────────────────────────────────────── */
+/* Entrada suave al scrollear */
+.lv3 .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--rv-demora,0ms),transform .8s cubic-bezier(.2,.7,.2,1) var(--rv-demora,0ms)}
+.lv3 .rv.rv-in{opacity:1;transform:none}
+
+/* Pastillas del cierre: texto centrado en la pastilla */
+.lv3 .lv3-condiciones li{display:flex;align-items:center;justify-content:center;text-align:center}
+
+/* Clorito del cierre al lado del botón (solo celu) */
+.lv3 .closing .cierre-logo-movil{display:none}
+/* Calculadora: los tres campos quedan alineados abajo aunque un rótulo ocupe dos renglones */
+
+@media(max-width:900px){
+  .lv3 .video-pause{display:none !important}
+  .lv3 video::-webkit-media-controls,.lv3 video::-webkit-media-controls-start-playback-button,.lv3 video::-webkit-media-controls-overlay-play-button{display:none !important;-webkit-appearance:none}
+}
+@media(max-width:650px){
+  /* Hero: tarjeta centrada, más cuidada, y el sello ya no tapa el título */
+  .lv3 .hero-tarjetas-movil{align-self:center;width:min(56vw,208px);margin:30px 0 0}
+  .lv3 .hero-tarjetas-movil .hero-sello-aval{width:104px;top:-22px;right:-32px}
+  .lv3 .hero-tarjetas-movil .hero-tarjeta-pie{padding:58px 16px 14px 18px}
+  .lv3 .hero-tarjetas-movil .hero-tarjeta-pie b{font-size:14px}
+  .lv3 .hero-tarjetas-movil .hero-tarjeta-pie small{font-size:11px;line-height:1.3}
+  .lv3 .hero-tarjetas-movil .hero-tarjeta-pie em{width:28px;height:28px;font-size:14px}
+  /* Cierre: Clorito chico junto al botón */
+  .lv3 .closing .cierre-logo{display:none}
+  .lv3 .lv3-cierre-acciones{flex-wrap:nowrap;gap:10px}
+  .lv3 .closing .cierre-logo-movil{display:block;height:92px;width:auto;margin-left:auto;flex:none;filter:drop-shadow(0 0 22px #4a9fd4cc) drop-shadow(0 8px 14px #081f3a77)}
+  .lv3 footer{padding-bottom:40px}
+}
+
+/* ── Catálogo en celu: una tarjeta por renglón (foto a la izquierda) + hoja de detalle ── */
+@media(max-width:650px){
+  .lv3 .v3-product-grid.lv3-catalogo{grid-template-columns:1fr;gap:14px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product{display:grid;grid-template-columns:118px 1fr;align-items:stretch;border-radius:22px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-image{aspect-ratio:auto;min-height:150px;height:100%;cursor:pointer}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-image>span{top:8px;left:8px;padding:4px 8px;font-size:10px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product-body{padding:14px 14px 14px 16px;justify-content:center;gap:2px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product h3{font-size:17px;line-height:1.2;margin:4px 0 6px;cursor:pointer}
+  .lv3 .v3-product-grid.lv3-catalogo .lv3-precio{margin-top:0;display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+  .lv3 .v3-product-grid.lv3-catalogo .lv3-precio b{font-size:20px}
+  .lv3 .v3-product-grid.lv3-catalogo .lv3-precio span{font-size:11px}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product-body small{font-size:10px}
+  .lv3 .v3-product-grid.lv3-catalogo .lv3-agregar,.lv3 .v3-product-grid.lv3-catalogo .v3-product .lv3-cantidad{margin-top:12px}
+}
+
+/* Hoja de detalle */
+.lv3 dialog.lv3-detalle{padding:0 0 22px;max-width:none;width:100%;margin:auto 0 0;border-radius:26px 26px 0 0;max-height:92svh;overflow:auto;background:#f0f7ff;animation:lv3-sube .35s cubic-bezier(.2,.7,.2,1)}
+.lv3 .lv3-detalle-foto{position:relative;aspect-ratio:4/3;overflow:hidden}
+.lv3 .lv3-detalle-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.lv3 .lv3-detalle-foto img[src*="cloro-combo-semanal"]{object-position:50% 18%}
+.lv3 .lv3-detalle-foto>span{position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:30px;background:#ffffffed;font-size:12px;color:var(--deep)}
+.lv3 .lv3-detalle .close-dialog{z-index:2;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:#ffffffe6;display:grid;place-items:center;font-size:24px;line-height:1;padding:0}
+.lv3 .lv3-detalle>:not(.lv3-detalle-foto):not(.close-dialog){margin-left:22px;margin-right:22px}
+.lv3 .lv3-detalle-tipo{display:block;margin-top:18px;font-size:11px;letter-spacing:.12em;color:var(--blue)}
+.lv3 .lv3-detalle h2{font-size:26px;line-height:1.2;margin-top:6px}
+.lv3 .lv3-detalle-desc{margin-top:10px;font-size:15px;line-height:1.6;color:var(--muted)}
+.lv3 .lv3-detalle-precio{display:flex;align-items:baseline;justify-content:space-between;margin-top:14px}
+.lv3 .lv3-detalle-precio b{font-size:30px;color:var(--deep)}
+.lv3 .lv3-detalle-precio span{font-size:13px;color:var(--muted)}
+.lv3 .lv3-detalle-precio span.hay{color:#1d7a4a;font-weight:600}
+.lv3 .lv3-detalle .lv3-agregar,.lv3 .lv3-detalle .lv3-cantidad{margin-top:14px;width:calc(100% - 44px)}
+.lv3 .lv3-detalle .lv3-cantidad{display:flex}
+@keyframes lv3-sube{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@media(min-width:651px){.lv3 dialog.lv3-detalle{display:none}}
+@media(prefers-reduced-motion:reduce){.lv3 dialog.lv3-detalle{animation:none}}
+.lv3 .lv3-detalle .lv3-agregar{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border:0;border-radius:999px;background:#1b5fa8;color:#fff;font-size:16px;font-weight:700;padding:0}
+.lv3 .lv3-detalle .lv3-agregar span{font-size:22px;line-height:1}
+.lv3 .lv3-detalle .lv3-cantidad{justify-content:space-between;min-height:50px}
+.lv3 .lv3-detalle .lv3-cantidad button{width:42px;height:42px}
+.lv3 .lv3-detalle .lv3-agregar span{color:#fff}
+
+/* ── Celu, ronda 4 ── */
+.lv3 .hero-media.sin-video video{visibility:hidden}
+.lv3 .hero-media.sin-video{background:url('/landing/v3/hero-poster.webp') center/cover no-repeat}
+.lv3 dialog:focus,.lv3 dialog:focus-visible{outline:none}
+@media(max-width:800px){
+  .lv3 .lv3-preguntas-clorito{display:flex;justify-content:center;margin:-4px 0 6px}
+  .lv3 .lv3-preguntas-clorito img{max-height:150px}
+}
+@media(max-width:650px){
+  /* fotos rectangulares con bordes redondeados */
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product{grid-template-columns:124px 1fr}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-image{border-radius:16px;margin:12px 0 12px 12px;height:auto;min-height:0;align-self:stretch;overflow:hidden}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-image img{border-radius:16px;min-height:132px}
+  .lv3 .hero-tarjetas-movil .hero-sello-aval{width:104px;top:-22px;right:-32px}
+  .lv3 .closing .cierre-logo-movil{align-self:center;transform:translateY(-16px);height:100px}
+}
+@media(max-width:900px){.lv3 .hero{height:100svh}}
+@media(max-width:900px){.lv3 .hero-media{-webkit-mask-image:linear-gradient(180deg,#000 74%,transparent 100%);mask-image:linear-gradient(180deg,#000 74%,transparent 100%)}}
+@media(max-width:900px){.lv3 .hero{height:min(100svh,690px)}.lv3 .hero-stage{height:100%}}
+@media(max-width:650px){.lv3 .closing .cierre-logo-movil{transform:translateY(-6px)}}
+/* Pasos: suben más y más despacio, uno tras otro */
+.lv3 .rv.rv-paso{transform:translateY(34px) scale(.96);transition-duration:.9s}
+.lv3 .rv.rv-paso.rv-in{transform:none}
+
+/* ===== Footer ordenado: escritorio en fila (marca · datos · links), celu apilado y centrado ===== */
+.lv3 .sober-footer{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:20px 40px}
+.lv3 .sober-footer .brand img{height:44px;width:auto;display:block}
+.lv3 .lv3-pie{min-width:0}
+.lv3 .lv3-pie p{margin:0}
+.lv3 .lv3-pie-links{justify-content:flex-end}
+.lv3 .lv3-pie-subir{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid #cfe3f7;color:var(--blue)}
+@media(max-width:900px){
+  .lv3 .sober-footer{grid-template-columns:1fr;justify-items:center;text-align:center;gap:16px}
+  .lv3 .lv3-pie-links{justify-content:center;flex-direction:column;align-items:center;gap:12px}
+  .lv3 .lv3-pie-links a{font-size:15px}
+  .lv3 .lv3-pie-subir{order:5;justify-self:center}
+  .lv3 footer{padding-top:36px;padding-bottom:28px}
+}
+
+/* sin el divisor de "ola" entre secciones (10/11, pedido de Sofía) */
+.lv3 .v3-service:before,.lv3 .clean:before,.lv3 .personal:before{content:none}
+
+/* Calculadora: aviso de que es orientativa y consejo del shock (reunión 10/11) */
+.lv3 .lv3-calc-nota{display:grid;gap:8px;padding:12px 14px;border-radius:16px;background:#ffffffb3;border:1px dashed #1b5fa840}
+.lv3 .lv3-calc-nota ul{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0;padding:0;list-style:none}
+.lv3 .lv3-calc-nota li{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--deep)}
+.lv3 .lv3-calc-nota svg{width:18px;height:18px;color:#1b5fa8}
+.lv3 .lv3-calc-nota p,.lv3 .lv3-calc-consejo p{margin:0;font-size:13px;line-height:1.55;color:var(--muted)}
+.lv3 .lv3-calc-consejo{display:grid;gap:6px;padding:12px 14px;border-radius:16px;background:#fff;border-left:4px solid #4a9fd4}
+.lv3 .lv3-calc-consejo b{color:var(--deep)}
+.lv3 .lv3-calc-link{justify-self:start;padding:0;border:0;background:none;font:inherit;font-size:13px;font-weight:700;color:#1b5fa8;cursor:pointer}
+.lv3 .lv3-calc-link:hover{text-decoration:underline}
+
+/* Calculadora por pasos: una pregunta por tarjeta + pileta dibujada que crece y se llena */
+.lv3 .lv3-calc-der{display:grid;gap:12px}
+.lv3 .lv3-calc-texto{display:grid;gap:8px;align-content:start;align-self:start!important}
+.lv3 .lv3-calc-dibujo{display:flex;align-items:center;justify-content:center;height:190px;margin-top:14px;padding:0 36px 26px}
+.lv3 .lv3-calc-pileta{position:relative;border:7px solid #fff;border-radius:14px;background:#bfe3f6;box-shadow:0 8px 18px -10px #0f3d6e66;transition:width .9s cubic-bezier(.3,1.2,.5,1),height .9s cubic-bezier(.3,1.2,.5,1);overflow:visible}
+.lv3 .lv3-calc-agua{position:absolute;left:0;right:0;bottom:0;height:0;border-radius:6px;background:linear-gradient(180deg,#4a9fd4,#1b5fa8);transition:height 2.2s cubic-bezier(.4,0,.3,1)}
+.lv3 .lv3-calc-agua.llena{height:100%}
+.lv3 .lv3-calc-agua.llena::after{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(115deg,#ffffff00 0 14px,#ffffff2e 14px 18px);animation:lv3-calc-brillo 3s linear infinite}
+@keyframes lv3-calc-brillo{to{background-position:60px 0}}
+.lv3 .lv3-calc-cota{position:absolute;font-size:12px;font-weight:700;color:var(--deep);white-space:nowrap}
+.lv3 .lv3-calc-cota.largo{left:50%;bottom:-30px;transform:translateX(-50%)}
+.lv3 .lv3-calc-cota.ancho{top:50%;right:-14px;transform:translate(100%,-50%)}
+.lv3 .lv3-calc-tarjeta{min-width:0;grid-template-columns:minmax(0,1fr);display:grid;gap:12px;min-height:250px;padding:18px 20px 20px;border-radius:24px;background:#fff;border:1px solid #1b5fa826;box-shadow:0 14px 30px -20px #0f3d6e55;overflow:hidden}
+.lv3 .lv3-calc-arriba{display:flex;align-items:center;justify-content:space-between;min-height:24px}
+.lv3 .lv3-calc-volver{padding:0;border:0;background:none;font:inherit;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
+.lv3 .lv3-calc-volver:hover{color:var(--deep)}
+.lv3 .lv3-calc-puntos{display:flex;gap:6px;margin:0;padding:0;list-style:none}
+.lv3 .lv3-calc-puntos li{width:8px;height:8px;border-radius:99px;background:#1b5fa82e;transition:width .3s,background .3s}
+.lv3 .lv3-calc-puntos li.hecho{background:#4a9fd4}
+.lv3 .lv3-calc-puntos li.actual{width:22px;background:#1b5fa8}
+.lv3 .lv3-calc-paso{min-width:0;display:grid;gap:14px;align-content:start;animation:lv3-calc-entra .4s cubic-bezier(.2,.9,.3,1)}
+@keyframes lv3-calc-entra{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+.lv3 .lv3-calc-paso h4{margin:0;font-family:var(--font-comfortaa,inherit);font-size:22px;color:var(--deep)}
+.lv3 .lv3-calc-campo{min-width:0;display:flex;align-items:center;gap:8px;padding:6px 18px;border-radius:18px;border:2px solid #1b5fa840;background:#f0f7ff;transition:border-color .2s}
+.lv3 .lv3-calc-campo:focus-within{border-color:#1b5fa8}
+.lv3 .lv3-calc-campo input{flex:1;min-width:0;width:100%;border:0;background:none;font:inherit;font-size:40px;font-weight:800;color:var(--deep);outline:none}
+.lv3 .lv3-calc-campo>span{font-size:22px;font-weight:700;color:var(--muted)}
+.lv3 .lv3-calc-campo.chico{padding:2px 12px;border-radius:12px}
+.lv3 .lv3-calc-campo.chico input{font-size:18px;width:70px;flex:none}
+.lv3 .lv3-calc-campo.chico>span{font-size:15px}
+.lv3 .lv3-calc-siguiente{display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.lv3 .lv3-calc-siguiente:disabled,.lv3 .lv3-calc-siguiente:disabled:hover{opacity:.45;pointer-events:none;transform:none;filter:none;background:var(--blue);color:#fff;box-shadow:none}
+.lv3 .lv3-calc-opciones{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.lv3 .lv3-calc-opciones button{display:grid;gap:2px;justify-items:center;padding:14px 6px;border-radius:16px;border:2px solid #1b5fa833;background:#f0f7ff;font:inherit;color:var(--deep);cursor:pointer;transition:transform .15s,border-color .15s}
+.lv3 .lv3-calc-opciones button:hover{transform:translateY(-2px);border-color:#1b5fa8}
+.lv3 .lv3-calc-opciones button[aria-checked=true]{border-color:#1b5fa8;background:#dcedfb}
+.lv3 .lv3-calc-opciones b{font-size:16px}
+.lv3 .lv3-calc-opciones small{font-size:12px;color:var(--muted)}
+.lv3 .lv3-calc-otra{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;color:var(--muted)}
+.lv3 .lv3-calc-final h4{font-size:15px;font-family:inherit;font-weight:600;color:var(--muted)}
+.lv3 .lv3-calc-litros{margin:-10px 0 0;font-size:16px;font-weight:600;color:var(--deep)}
+.lv3 .lv3-calc-litros b{font-size:40px;font-weight:800;font-variant-numeric:tabular-nums}
+.lv3 .lv3-calc-datos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0}
+.lv3 .lv3-calc-datos>div{padding:10px 12px;border-radius:16px;background:#f0f7ff;border:1px solid #1b5fa81f}
+.lv3 .lv3-calc-datos dt{font-size:12px;color:var(--muted);margin:0}
+.lv3 .lv3-calc-datos dd{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:4px 0 0;font-size:22px;font-weight:800;color:var(--deep);font-variant-numeric:tabular-nums}
+.lv3 .lv3-calc-pastillas{display:flex;flex-wrap:wrap;align-items:center;gap:3px;flex-basis:100%;max-width:100%}
+.lv3 .lv3-calc-pastillas.muchas img{width:19px;height:19px}
+.lv3 .lv3-calc-pastillas.muchas .media{width:19px;height:19px}.lv3 .lv3-calc-pastillas.muchas .media img{width:19px;height:19px}
+.lv3 .lv3-calc-pastillas .mas{font-size:13px;color:var(--muted);margin-left:4px}
+.lv3 .lv3-calc-pastillas img{width:26px;height:26px;object-fit:contain;filter:drop-shadow(0 2px 2px #0f3d6e55);animation:lv3-calc-cae .5s cubic-bezier(.3,1.5,.5,1) backwards}
+.lv3 .lv3-calc-pastillas .media{display:block;width:26px;height:26px;filter:drop-shadow(0 2px 2px #0f3d6e55);animation:lv3-calc-cae .5s cubic-bezier(.3,1.5,.5,1) backwards}
+.lv3 .lv3-calc-pastillas .media img{width:26px;height:26px;filter:none;animation:none;-webkit-mask-image:linear-gradient(90deg,#000 50%,#0000003d 50%);mask-image:linear-gradient(90deg,#000 50%,#0000003d 50%)}
+@keyframes lv3-calc-cae{from{opacity:0;transform:translateY(-14px) scale(.6)}}
+.lv3 .lv3-calc-final .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.lv3 .lv3-calc-final .btn svg{width:18px;height:18px}
+.lv3 .lv3-calc-final .lv3-calc-link{justify-self:center}
+@media(max-width:800px){.lv3 .lv3-calc-dibujo{height:150px}}
+@media(max-width:480px){.lv3 .lv3-calc-datos{grid-template-columns:1fr}.lv3 .lv3-calc-campo input{font-size:32px}.lv3 .lv3-calc-opciones{gap:6px}}
+@media(prefers-reduced-motion:reduce){.lv3 .lv3-calc-paso,.lv3 .lv3-calc-pastillas img,.lv3 .lv3-calc-pastillas .media,.lv3 .lv3-calc-agua.llena::after{animation:none}.lv3 .lv3-calc-pileta,.lv3 .lv3-calc-agua{transition:none}}
+
+/* Calculadora: desplegable "¿Por qué puede variar?" y pie con Consejos de Pancho */
+.lv3 .lv3-calc-varia{font-size:13px;color:var(--muted)}
+.lv3 .lv3-calc-varia summary{list-style:none;cursor:pointer;text-align:center}
+.lv3 .lv3-calc-varia summary::-webkit-details-marker{display:none}
+.lv3 .lv3-calc-varia summary u{color:#1b5fa8;font-weight:600;text-underline-offset:3px}
+.lv3 .lv3-calc-varia[open]{display:grid;gap:8px;padding:12px 14px;border-radius:16px;background:#f0f7ff}
+.lv3 .lv3-calc-varia[open] summary{text-align:left}
+.lv3 .lv3-calc-varia ul{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0;padding:0;list-style:none}
+.lv3 .lv3-calc-varia li{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--deep)}
+.lv3 .lv3-calc-varia svg{width:18px;height:18px;color:#1b5fa8}
+.lv3 .lv3-calc-varia p{margin:0;font-size:13px;line-height:1.55}
+.lv3 .lv3-calc-varia b{color:var(--deep)}
+.lv3 .lv3-calc-pie{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding-top:10px;border-top:1px solid #1b5fa81a}
+.lv3 .lv3-calc-final .lv3-calc-pie .lv3-calc-link{justify-self:auto;white-space:nowrap}
+.lv3 .lv3-consejos-abrir{white-space:nowrap}
+@media(max-width:480px){.lv3 .lv3-calc-pie{justify-content:center}}
+.lv3 .lv3-consejos-abrir{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1px solid #1b5fa833;background:#fff7e0;font-size:13px;font-weight:700;color:var(--deep);transition:transform .15s,background .15s}
+.lv3 .lv3-consejos-abrir:hover{transform:translateY(-1px);background:#ffefc2}
+/* Sección Consejos de Pancho */
+.lv3 .lv3-consejos-cabecera{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px}
+.lv3 .lv3-consejos-cabecera h2{margin:18px 0 10px}
+.lv3 .lv3-consejos-cabecera p{margin:0;max-width:520px;font-size:15px;line-height:1.6;color:var(--muted)}
+.lv3 .lv3-consejos-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:0;padding:0;list-style:none}
+.lv3 .lv3-consejo{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:22px;background:#f0f7ff;border:1px solid #1b5fa81a;transition:transform .2s,box-shadow .2s}
+.lv3 .lv3-consejo:hover{transform:translateY(-3px);box-shadow:0 16px 30px -22px #0f3d6e88}
+.lv3 .lv3-consejo i{display:grid;place-items:center;width:50px;height:50px;border-radius:15px;background:#fff;color:#1b5fa8}
+.lv3 .lv3-consejo i svg{width:28px;height:28px}
+.lv3 .lv3-consejo small{margin-top:6px;font-size:11px;font-weight:700;letter-spacing:1px;color:#4a9fd4;text-transform:uppercase}
+.lv3 .lv3-consejo h3{margin:0;font-size:20px;line-height:1.3;color:var(--deep)}
+.lv3 .lv3-consejo p{margin:0;font-size:14px;line-height:1.6;color:var(--muted)}
+.lv3 .lv3-consejo .btn{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding:11px 18px;font-size:13px}
+.lv3 .lv3-consejo p+.btn{margin-top:12px}
+.lv3 .lv3-consejo .btn svg{width:16px;height:16px}
+@media(max-width:900px){.lv3 .lv3-consejos-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lv3 .lv3-consejos-carrusel{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px;max-width:820px;margin:0 auto}
+.lv3 .lv3-consejo-grande{min-height:300px;padding:34px 38px;gap:10px;animation:lv3-consejo-entra .35s cubic-bezier(.3,1.2,.5,1)}
+.lv3 .lv3-consejo-grande:hover{transform:none}
+.lv3 .lv3-consejo-grande h3{font-size:26px}
+.lv3 .lv3-consejo-grande p{font-size:16px;max-width:560px}
+.lv3 .lv3-consejo-grande i{width:62px;height:62px;border-radius:18px}
+.lv3 .lv3-consejo-grande i svg{width:34px;height:34px}
+@keyframes lv3-consejo-entra{from{opacity:0;transform:translateX(18px)}}
+.lv3 .lv3-consejos-flecha{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid #1b5fa833;background:#fff;color:var(--deep);font-size:20px;font-weight:700;box-shadow:0 8px 18px -12px #0f3d6e88;transition:transform .15s,background .15s,opacity .15s}
+.lv3 .lv3-consejos-flecha:hover:not(:disabled){transform:scale(1.08);background:#e8f3ff}
+.lv3 .lv3-consejos-flecha:disabled{opacity:.3;cursor:default}
+.lv3 .lv3-consejos-puntos{display:flex;justify-content:center;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.lv3 .lv3-consejos-puntos li{width:9px;height:9px;border-radius:50%;background:#1b5fa833;transition:width .2s,background .2s}
+.lv3 .lv3-consejos-puntos li.visto{background:#4a9fd4}
+.lv3 .lv3-consejos-puntos li.actual{width:26px;border-radius:999px;background:#1b5fa8}
+.lv3 .lv3-consejos-todos{display:grid;gap:22px;justify-items:center;animation:lv3-consejo-entra .35s ease}
+.lv3 .lv3-consejos-todos .lv3-consejos-grid{width:100%}
+.lv3 .lv3-consejos-reiniciar{padding:10px 18px;border-radius:999px;border:1px solid #1b5fa833;background:#fff;font-size:14px;font-weight:700;color:var(--deep)}
+.lv3 .lv3-consejos-reiniciar:hover{background:#e8f3ff}
+@media(max-width:640px){
+  .lv3 .lv3-consejos-carrusel{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px}
+  .lv3 .lv3-consejos-carrusel .lv3-consejo-grande{order:-1;flex:0 0 100%;min-height:0;padding:24px 22px}
+  .lv3 .lv3-consejos-todos .lv3-consejos-grid{display:grid;grid-template-columns:1fr;overflow:visible;margin:0;padding:0}
+  .lv3 .lv3-consejos-todos .lv3-consejo{flex:none}
+  .lv3 .lv3-consejo-grande h3{font-size:22px}
+  .lv3 .lv3-consejos-flecha{width:44px;height:44px}
+}
+@media(max-width:650px){
+  .lv3 .lv3-consejos-cabecera img{width:auto;height:110px}
+  .lv3 .lv3-consejos-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(-1 * var(--gutter,16px));padding:4px var(--gutter,16px) 14px;scrollbar-width:none}
+  .lv3 .lv3-consejos-grid::-webkit-scrollbar{display:none}
+  .lv3 .lv3-consejo{flex:0 0 82%;scroll-snap-align:center}
+}
+@media(prefers-reduced-motion:reduce){.lv3 .lv3-consejo,.lv3 .lv3-consejo-grande,.lv3 .lv3-consejos-todos{transition:none;animation:none}}
+
+/* Calculadora: aviso de cantidad orientativa, siempre visible */
+.lv3 .lv3-calc-aviso{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:16px;background:#fff7e0;border:1px solid #ffc94a99}
+.lv3 .lv3-calc-aviso-i{flex:none;width:22px;height:22px;color:#b07800;margin-top:1px}
+.lv3 .lv3-calc-aviso b{display:block;font-size:15px;color:var(--deep)}
+.lv3 .lv3-calc-aviso p{margin:2px 0 8px;font-size:13px;line-height:1.5;color:var(--deep)}
+.lv3 .lv3-calc-aviso ul{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.lv3 .lv3-calc-aviso li{display:inline-flex;align-items:center;gap:4px;padding:3px 10px 3px 7px;border-radius:99px;background:#fff;font-size:12px;font-weight:600;color:var(--deep)}
+.lv3 .lv3-calc-aviso li svg{width:16px;height:16px;color:#1b5fa8}
+.lv3 .lv3-calc-shock{margin:0;text-align:center;font-size:13px;line-height:1.5;color:var(--muted)}
+.lv3 .lv3-calc-shock .lv3-calc-link{display:inline}
+
+/* Pasos del catálogo y tarjetas del service: que se levanten de a una al pasar el mouse aunque ya hayan entrado con la animación del scroll */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .lv3 .rv.rv-in:is(.lv3-pasos li,.lv3-service-card){transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--rv-demora,0ms),transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+  .lv3 .rv.rv-in:is(.lv3-pasos li,.lv3-service-card):hover{transform:translateY(-8px) scale(1.02);box-shadow:0 30px 56px -18px #1b5fa855}
+}
+
+/* "Pedir es fácil, en 3 pasos": número grande, flechas entre pasos y, en el celu, explicación al tocar */
+.lv3 .lv3-como{margin:0 0 38px}
+.lv3 .lv3-como-titulo{margin:0 0 16px;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1b5fa8}
+.lv3 .lv3-como .lv3-pasos{margin:0;gap:34px}
+.lv3 .lv3-como .lv3-pasos li{gap:8px}
+.lv3 .lv3-paso-cabeza{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:default}
+.lv3 .lv3-paso-cabeza em{position:absolute;top:18px;right:20px;font-style:normal;font-size:44px;font-weight:800;line-height:1;color:#1b5fa81f}
+.lv3 .lv3-como .lv3-pasos li i{margin:0}
+.lv3 .lv3-como .lv3-pasos li b{font-size:19px;color:var(--deep)}
+.lv3 .lv3-como .lv3-pasos li small b{font-size:inherit}
+.lv3 .lv3-como .lv3-pasos li+li:before{content:"→";left:-30px;top:50%;width:26px;height:26px;display:grid;place-items:center;border-radius:50%;background:#1b5fa8;color:#fff;font-size:14px;font-weight:700;transform:translateY(-50%);z-index:1}
+.lv3 .lv3-paso-detalle{display:none}
+@media(max-width:800px) and (min-width:651px){.lv3 .lv3-como .lv3-pasos li+li:before{display:none}.lv3 .lv3-como .lv3-pasos{gap:12px}}
+@media(max-width:650px){
+  .lv3 .lv3-como{margin-bottom:26px}
+  .lv3 .lv3-como-titulo{font-size:12px;margin-bottom:10px;text-align:center}
+  .lv3 .lv3-como .lv3-pasos{grid-template-columns:repeat(3,1fr);gap:22px}
+  .lv3 .lv3-como .lv3-pasos li{padding:12px 6px 10px}
+  .lv3 .lv3-paso-cabeza{width:100%;align-items:center;gap:6px;text-align:center;cursor:pointer}
+  .lv3 .lv3-paso-cabeza em{top:6px;right:8px;font-size:22px}
+  .lv3 .lv3-como .lv3-pasos li i{width:40px;height:40px;border-radius:12px}
+  .lv3 .lv3-como .lv3-pasos li i svg{width:20px;height:20px}
+  .lv3 .lv3-como .lv3-pasos li b{font-size:12px;line-height:1.25}
+  .lv3 .lv3-como .lv3-pasos li small{display:none}
+  .lv3 .lv3-como .lv3-pasos li.abierto{border-color:#1b5fa8;box-shadow:inset 0 0 0 1px #1b5fa8}
+  .lv3 .lv3-como .lv3-pasos li+li:before{display:grid;left:-20px;width:18px;height:18px;font-size:10px}
+  .lv3 .lv3-paso-detalle{display:block;margin:10px 0 0;padding:10px 14px;border-radius:14px;background:#fff;border:1px solid #1b5fa826;font-size:13px;line-height:1.5;color:var(--deep);text-align:center;animation:lv3-calc-entra .3s ease}
+}
+/* Pasos: en vez del círculo, tres flechitas con un brillo que avanza hacia el paso siguiente */
+.lv3 .lv3-como .lv3-pasos li+li:before{content:"›››";left:-32px;width:30px;height:auto;display:block;text-align:center;border-radius:0;background:linear-gradient(90deg,#1b5fa82e 0 30%,#1b5fa8 45% 55%,#1b5fa82e 70% 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;font-size:28px;font-weight:800;line-height:1;letter-spacing:-4px;animation:lv3-flechas 1.6s linear infinite}
+.lv3 .lv3-como .lv3-pasos li:nth-child(3):before{animation-delay:.8s}
+@keyframes lv3-flechas{from{background-position:100% 0}to{background-position:0 0}}
+@media(max-width:650px){.lv3 .lv3-como .lv3-pasos li+li:before{left:-21px;width:20px;font-size:18px;letter-spacing:-3px}}
+@media(prefers-reduced-motion:reduce){.lv3 .lv3-como .lv3-pasos li+li:before{animation:none;background:none;color:#1b5fa8aa}}
+
+/* Consejos de Pancho: toque de amarillo para que no se vea tan lavado */
+.lv3 .lv3-consejo-grande{background:linear-gradient(135deg,#fff8e3,#fff1c4);border:1px solid #f2c75c88;border-top:5px solid #ffc04d;box-shadow:0 22px 40px -28px #b9831d99}
+.lv3 .lv3-consejo-grande i{background:#ffc04d;color:#0f3d6e;box-shadow:0 8px 16px -8px #b9831dcc}
+.lv3 .lv3-consejo-grande small{color:#a86a00}
+.lv3 .lv3-consejo-grande .btn{background:#1b5fa8;color:#fff}
+.lv3 .lv3-consejos-flecha{background:#ffc04d;border-color:#e9a82d;color:#0f3d6e;box-shadow:0 10px 18px -10px #b9831dcc}
+.lv3 .lv3-consejos-flecha:hover:not(:disabled){background:#ffcf75}
+.lv3 .lv3-consejos-flecha:disabled{background:#fff;border-color:#1b5fa833}
+.lv3 .lv3-consejos-puntos li.visto{background:#f2c75c}
+.lv3 .lv3-consejos-puntos li.actual{background:#ffc04d;box-shadow:0 0 0 2px #fff,0 0 0 3px #e9a82d}
+.lv3 .lv3-consejos-todos .lv3-consejo{background:#fff8e3;border-color:#f2c75c88}
+.lv3 .lv3-consejos-todos .lv3-consejo i{background:#ffc04d;color:#0f3d6e}
+.lv3 .lv3-consejos-todos .lv3-consejo small{color:#a86a00}
+.lv3 .lv3-consejos-reiniciar{background:#ffc04d;border-color:#e9a82d}
+.lv3 .lv3-consejos-reiniciar:hover{background:#ffcf75}
+
+/* sin la línea celeste que cruzaba la landing arriba de Preguntas frecuentes */
+.lv3 main .questions{box-shadow:none}
+
+/* Mapa de zonas: botones Cloro / Service; se pintan los partidos que cubre cada uno */
+.lv3 .lv3-mapa-listas{display:grid;gap:12px;align-content:center;justify-items:start}
+.lv3 .lv3-mapa-botones{display:inline-flex;padding:4px;border-radius:999px;background:#e3effa;border:1px solid #1b5fa826}
+.lv3 .lv3-mapa-botones button{padding:10px 24px;border:0;border-radius:999px;background:none;font-weight:700;font-size:15px;color:#1b5fa8;transition:background .2s,color .2s,box-shadow .2s}
+.lv3 .lv3-mapa-botones button.on{background:#ffc04d;color:#0f3d6e;box-shadow:0 8px 16px -10px #b9831dcc}
+.lv3 .lv3-mapa-botones button:not(.on):hover{background:#fff}
+.lv3 .lv3-mapa-grupo-titulo{margin:6px 0 0;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#1b5fa8}
+.lv3 .lv3-mapa-listas .lv3-mapa-lista li{width:fit-content}
+.lv3 .m-zona{animation:lv3-mz-entra .45s ease}
+@keyframes lv3-mz-entra{from{opacity:0}}
+@media(max-width:700px){.lv3 .lv3-zonas-fila .lv3-mapa-listas{justify-items:center}.lv3 .lv3-zonas-fila .lv3-mapa-lista{justify-content:center}}
+.lv3 .lv3-mapa-nota{text-align:center}
+.lv3 .lv3-mapa-col{min-width:0}
+
+/* Limpieza: pestañas Cloro / Service y barrefondo */
+.lv3 .clean-tabs{display:inline-flex;align-self:flex-start;padding:4px;border-radius:999px;background:#e3effa;border:1px solid #1b5fa826}
+.lv3 .clean-tabs button{padding:9px 22px;border:0;border-radius:999px;background:none;font-weight:700;font-size:15px;color:#1b5fa8;transition:background .2s,color .2s}
+.lv3 .clean-tabs button.on{background:#ffc04d;color:#0f3d6e;box-shadow:0 8px 16px -10px #b9831dcc}
+.lv3 .clean-tabs button:not(.on):hover{background:#fff}
+.lv3 .clean-lienzo{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.lv3 .clean-frame.clean-servicio{touch-action:none;cursor:grab}
+.lv3 .clean-frame.clean-servicio.clean-limpia{touch-action:auto;cursor:default}
+.lv3 .clean-frame.con-barre{cursor:none}
+.lv3 .clean-barre{position:absolute;left:0;top:0;width:170px;height:170px;transform:translate(-32%,-85%);pointer-events:none;z-index:4;display:none;filter:drop-shadow(0 4px 4px #003b5577)}
+.lv3 .clean-barre img{display:block;width:100%;height:100%}
+.lv3 .clean-frame.con-barre .clean-barre{display:block}
+.lv3 .clean-avance{width:min(100%,260px);height:8px;border-radius:999px;background:#1b5fa81f;overflow:hidden}
+.lv3 .clean-avance span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#4a9fd4,#ffc04d);transition:width .15s}
+.lv3 .clean-layout .clean-controls>div{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px}
+@media(max-width:800px){.lv3 .clean-tabs{align-self:center}}
+
+/* Limpieza: títulos en dos líneas, pestañas con el amarillo que se traslada, botón que invita al barrefondo */
+.lv3 .clean-texto h2{font-size:clamp(28px,3.3vw,44px);line-height:1.12;max-width:none}
+.lv3 .clean-texto h2 span{display:block;white-space:nowrap}
+.lv3 .clean-tabs{position:relative;display:inline-grid;grid-template-columns:1fr 1fr}
+.lv3 .clean-tabs::before{content:"";position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:#ffc04d;box-shadow:0 8px 16px -10px #b9831dcc;transition:transform .35s cubic-bezier(.3,1.2,.5,1)}
+.lv3 .clean-tabs[data-modo="service"]::before{transform:translateX(100%)}
+.lv3 .clean-tabs button{position:relative;z-index:1;text-align:center;min-width:110px}
+.lv3 .clean-tabs button.on{background:none;box-shadow:none;color:#0f3d6e}
+.lv3 .lv3-mapa-botones{position:relative;display:inline-grid;grid-template-columns:1fr 1fr}
+.lv3 .lv3-mapa-botones::before{content:"";position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:#ffc04d;box-shadow:0 8px 16px -10px #b9831dcc;transition:transform .35s cubic-bezier(.3,1.2,.5,1)}
+.lv3 .lv3-mapa-botones[data-servicio="service"]::before{transform:translateX(100%)}
+.lv3 .lv3-mapa-botones button{position:relative;z-index:1;min-width:110px;text-align:center}
+.lv3 .lv3-mapa-botones button.on{background:none;box-shadow:none}
+.lv3 .clean-invita{width:max-content;max-width:90%}
+
+/* "¿Querés tu pileta así?" aparece recién cuando la pileta quedó limpia */
+.lv3 .clean-final{display:grid;gap:12px;justify-items:center;margin-top:10px;animation:lv3-cta-entra .5s cubic-bezier(.3,1.2,.5,1)}
+.lv3 .clean-final .clean-cta-titulo{margin:0;font-weight:700;font-size:18px;text-align:center}
+.lv3 .clean-final .clean-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0}
+@keyframes lv3-cta-entra{from{opacity:0;transform:translateY(14px)}}
+.lv3 .clean-layout .clean-controls .clean-final .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;font-size:14px;font-weight:700;text-decoration:none;border-radius:999px}
+.lv3 .clean-layout .clean-controls .clean-final .btn-blue{color:#fff}
+.lv3 .clean-layout .clean-controls .clean-final .btn svg{width:16px;height:16px}
+
+/* Limpieza: el texto arranca a la altura de la pileta; "¿Querés tu pileta así?" a la izquierda (abajo de la pileta solo en celu) */
+@media(min-width:801px){
+  .lv3 .clean-layout .clean-texto{align-self:start;grid-row:1/3}
+  .lv3 .clean-final-abajo{display:none}
+  .lv3 .clean-final-izq{justify-items:start;margin-top:18px}
+  .lv3 .clean-final-izq .clean-cta-titulo{text-align:left}
+  .lv3 .clean-final-izq .clean-cta{justify-content:flex-start}
+}
+@media(max-width:800px){.lv3 .clean-final-izq{display:none}}
+/* ya se dice a la izquierda: el mensaje de "limpia" queda solo para lectores de pantalla */
+.lv3 .clean-layout .clean-controls p.clean-estado-oculto{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(min-width:801px){.lv3 .clean-layout .clean-controls .clean-final-abajo{display:none}}
+@media(max-width:800px){.lv3 .clean-layout .clean-texto .clean-final-izq{display:none}}
+
+/* "Así da gusto meterse": halo amarillo que late y un brillo que lo cruza, para llamar la atención */
+.lv3 .clean-frame.clean-limpia .clean-done{overflow:hidden;border:0;background:#ffffffd9;color:#0f3d6e;box-shadow:0 2px 10px #0a3d5c26;animation:none;font-size:13px!important;padding:7px 14px!important;font-weight:500;top:37%!important}
+.lv3 .clean-frame.clean-limpia .clean-done::after{display:none;content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,#ffffffcc,transparent);transform:skewX(-20deg);animation:lv3-brillo 2.8s ease-in-out infinite}
+@keyframes lv3-halo{0%,100%{box-shadow:0 0 0 0 #ffc94a99,0 0 18px 2px #ffc94a88,0 10px 24px #081f3a44}50%{box-shadow:0 0 0 10px #ffc94a00,0 0 34px 8px #ffc94acc,0 10px 24px #081f3a44}}
+@keyframes lv3-brillo{0%,55%{left:-60%}100%{left:130%}}
+@media(prefers-reduced-motion:reduce){.lv3 .clean-frame.clean-limpia .clean-done{animation:none;box-shadow:0 0 22px 4px #ffc94acc}.lv3 .clean-frame.clean-limpia .clean-done::after{display:none}}
+
+/* Clorito junto a la pileta de "El cuidado se nota" */
+.lv3 .clean-frame-wrap{position:relative;width:100%}
+.lv3 .clean-layout .clean-frame-wrap{grid-column:2;grid-row:1;align-self:end;justify-self:center;max-width:280px}
+.lv3 .clean-layout .clean-frame-wrap .clean-frame{grid-column:auto;grid-row:auto;max-width:none;width:100%}
+.lv3 .clean-frame>img.clean-celebra{position:absolute;z-index:6;inset:auto;left:50%;bottom:28%;height:auto;width:auto;max-width:62%;max-height:120px;object-fit:contain;transform:translateX(-50%);pointer-events:none;filter:drop-shadow(0 6px 8px #081f3a66);animation:lv3-clorito-pop .55s cubic-bezier(.3,1.5,.5,1) .15s backwards}
+@keyframes lv3-clorito-pop{from{opacity:0;transform:translateX(-50%) translateY(16px) scale(.7)}}
+@media(max-width:800px){.lv3 .clean-frame>img.clean-celebra{max-height:96px}}
+@media(prefers-reduced-motion:reduce){.lv3 .clean-frame>img.clean-celebra{animation:none}}
+
+/* Clorito en la calculadora (aviso orientativo) y en el mapa de zonas (solo escritorio) */
+.lv3 .lv3-mapa-clorito{display:block;height:auto;width:auto;margin-top:6px;filter:drop-shadow(0 6px 8px #081f3a44);animation:lv3-mclorito .5s cubic-bezier(.3,1.5,.5,1)}
+.lv3 .lv3-mapa-clorito-cloro{max-height:176px}
+.lv3 .lv3-mapa-clorito-service{max-height:116px}
+@keyframes lv3-mclorito{from{opacity:0;transform:translateY(12px) scale(.8)}}
+@media(max-width:800px){.lv3 .lv3-mapa-clorito-cloro{max-height:124px}.lv3 .lv3-mapa-clorito-service{max-height:84px}}
+@media(prefers-reduced-motion:reduce){.lv3 .lv3-mapa-clorito{animation:none}}
+
+/* Mapa: Clorito a la derecha de los nombres (en celu queda debajo, centrado) */
+.lv3 .lv3-mapa-fila{display:flex;flex-direction:column;align-items:center;gap:6px}
+@media(min-width:801px){.lv3 .lv3-mapa-fila{flex-direction:row;align-items:flex-end;justify-content:flex-start;gap:8px}.lv3 .lv3-mapa-clorito{margin:0 0 -4px}}
+
+/* Clorito ayudante flotante (abre "Preparamos tu pedido") */
+.lv3 .lv3-ayuda{position:fixed;right:14px;bottom:16px;z-index:50;display:flex;align-items:flex-end;gap:8px;touch-action:none;animation:lv3-ayuda-pop .5s cubic-bezier(.3,1.5,.5,1)}
+body:has(.lv3-carrito-pastilla) .lv3 .lv3-ayuda{bottom:84px}
+.lv3 .lv3-ayuda-clorito{position:relative;display:block;width:82px;height:82px;padding:0;border:0;background:none;cursor:grab;touch-action:none;-webkit-tap-highlight-color:transparent}
+.lv3 .lv3-ayuda-clorito:active{cursor:grabbing}
+.lv3 .lv3-ayuda-clorito img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 8px 10px #081f3a77);pointer-events:none;user-select:none;transition:transform .25s cubic-bezier(.3,1.5,.5,1)}
+.lv3 .lv3-ayuda-clorito:hover img{transform:scale(1.08) rotate(-4deg)}
+.lv3 .lv3-ayuda-globo{order:-1;margin-bottom:14px;padding:9px 14px;border:0;border-radius:16px 16px 4px 16px;background:#fff;color:#0f3d6e;font-weight:700;font-size:14px;box-shadow:0 10px 24px -10px #081f3a88;cursor:pointer;animation:lv3-ayuda-pop .4s ease .3s backwards}
+.lv3 .lv3-ayuda-cerrar{position:absolute;left:-6px;top:-4px;z-index:2;width:22px;height:22px;padding:0;border:0;border-radius:50%;background:#0f3d6e;color:#fff;font-size:15px;line-height:20px;cursor:pointer;opacity:.85}
+@keyframes lv3-ayuda-pop{from{opacity:0;transform:translateY(14px) scale(.8)}}
+@media(prefers-reduced-motion:reduce){.lv3 .lv3-ayuda,.lv3 .lv3-ayuda-globo{animation:none}}
+.lv3 .lv3-ayuda-avatar{position:relative;display:block;width:82px;height:82px;flex:none}
+.lv3 .lv3-ayuda-avatar .lv3-ayuda-cerrar{left:-2px;top:0}
+
+/* Celular: la pileta (dentro de .clean-frame-wrap) se había ido a una segunda columna angosta */
+@media(max-width:800px){
+.lv3 .clean-layout .clean-frame-wrap{grid-column:1;grid-row:auto;width:min(100%,260px);max-width:260px;justify-self:center;align-self:center}
+}
+
+/* Consejos: flechas adentro de la tarjeta */
+.lv3 .lv3-consejos-carrusel{display:block}
+.lv3 .lv3-consejo-grande{position:relative;max-width:720px;margin:0 auto}
+.lv3 .lv3-consejo-nav{display:flex;justify-content:flex-end;gap:8px;margin-top:auto;padding-top:14px}
+.lv3 .lv3-consejo-nav .lv3-consejos-flecha{width:40px;height:40px;font-size:17px}
+@media(max-width:640px){.lv3 .lv3-consejos-carrusel{display:block}.lv3 .lv3-consejo-nav .lv3-consejos-flecha{width:38px;height:38px}}
+
+/* Footer más compacto + lema */
+.lv3 .lv3-pie .lv3-pie-lema{font-family:var(--font-comfortaa);font-weight:700;font-size:15px;color:var(--deep);margin-bottom:4px}
+@media(max-width:650px){
+  .lv3 footer{padding-top:26px;padding-bottom:20px}
+  .lv3 .sober-footer{gap:10px}
+  .lv3 .lv3-pie-links{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px 18px}
+  .lv3 .lv3-pie-links a{font-size:14px}
+  .lv3 .lv3-pie-subir{display:none}
+}
+/* Preguntas: la respuesta usa todo el ancho */
+.lv3 .faq-a p{padding-right:0;max-width:none}
+@media(max-width:650px){.lv3 .faq-a p{padding:0 0 22px;max-width:none;width:100%}}
+.lv3 .lv3-preguntas-lista details p{padding-right:0!important;max-width:none}
+@media(max-width:650px){.lv3 .questions>.wrap{padding-left:6px;padding-right:6px}.lv3 .lv3-preguntas-lista details p{padding-bottom:18px}}
+/* Calculadora en celular: más compacta */
+@media(max-width:650px){
+  .lv3 .lv3-calc{gap:14px}
+  .lv3 .lv3-calc-dibujo{display:none}
+  .lv3 .lv3-calc-texto h3{font-size:22px;margin:2px 0 6px}
+  .lv3 .lv3-calc-texto p{font-size:14px;line-height:1.5}
+  .lv3 .lv3-calc-tarjeta{padding:16px 16px 18px}
+  .lv3 .lv3-calc-final{gap:10px}
+  .lv3 .lv3-calc-datos{gap:6px}
+}
+@media(max-width:650px){
+  .lv3 .lv3-calc-datos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .lv3 .lv3-calc-datos>div{padding:10px 12px}
+  .lv3 .lv3-calc-datos dt{font-size:12px}
+  .lv3 .lv3-calc-aviso ul{display:none}
+  .lv3 .lv3-calc-aviso{padding:12px 14px}
+}
+/* Catálogo en celular: menos aire arriba, "Pedir es fácil" a la izquierda y pasos más respirados */
+@media(max-width:650px){
+  .lv3 .v3-products.sec{padding-top:18px}
+  .lv3 .v3-products>.wrap{padding-top:18px}
+  .lv3 .v3-products .v3-head h2{margin-top:0}
+  .lv3 .lv3-como-titulo{text-align:left}
+  .lv3 .lv3-como .lv3-pasos li{padding:26px 6px 12px}
+  .lv3 .lv3-paso-cabeza{gap:8px}
+  .lv3 .lv3-paso-cabeza em{top:4px;right:8px;font-size:16px}
+}
+@media(max-width:650px){
+  .lv3 .lv3-filtros{flex-wrap:nowrap;overflow-x:auto;gap:18px;scrollbar-width:none;margin-bottom:18px}
+  .lv3 .lv3-filtros::-webkit-scrollbar{display:none}
+  .lv3 .lv3-filtros button{flex:none;white-space:nowrap}
+}
+/* Preguntas frecuentes: la pregunta en negrita */
+.lv3 .lv3-preguntas-lista summary,.lv3 .lv3-preguntas-lista summary span:first-child{font-weight:700}
+
+/* Consejos: flechas a la altura del botón, a la derecha */
+.lv3 .lv3-consejo-pie{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:14px}
+.lv3 .lv3-consejo-pie .lv3-consejo-nav{margin:0;padding:0}
+.lv3 .lv3-calc-tarjeta{scroll-margin-top:84px}
+/* Menú del celu: vidrio translúcido, separado de la barra, y la × más fácil de tocar */
+@media(max-width:860px){
+  .lv3 .nav ul.open{top:calc(100% + 8px);left:0;right:0;background:#ffffffdb;-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);border-radius:18px;border:1px solid #ffffff99;box-shadow:0 14px 34px -16px #0f3d6e66;padding:14px 22px;gap:0}
+  .lv3 .nav ul.open li a{display:block;padding:13px 0}
+  .lv3 .nav .mobile-menu{min-width:44px;min-height:44px;display:grid;place-items:center;margin-right:-4px}
+}
+/* Portada en celular: los botones más arriba del borde inferior */
+@media(max-width:650px){
+  .lv3 .hero-copy{padding-top:112px}
+  .lv3 .hero-sub{margin-top:12px;gap:16px}
+}
+
+/* Celu: Clorito de la pileta más grande; flechas de consejos siempre a la derecha; footer como tarjeta; menú más sólido */
+@media(max-width:800px){.lv3 .clean-frame>img.clean-celebra{max-height:128px;max-width:70%}}
+.lv3 .lv3-consejo-pie .lv3-consejo-nav{margin-left:auto}
+@media(max-width:650px){
+  .lv3 footer{margin:0 14px 14px;border-radius:22px}
+  .lv3 .nav ul.open{background:#fffffff2}
+}
+
+/* Clorito del mapa: mismo tamaño en cloro y service */
+.lv3 .lv3-mapa-clorito-cloro,.lv3 .lv3-mapa-clorito-service{max-height:150px}
+@media(max-width:800px){.lv3 .lv3-mapa-clorito-cloro,.lv3 .lv3-mapa-clorito-service{max-height:112px}}
+@media(max-width:650px){
+  /* Portada: el recuadro y sus botones, centrados */
+  .lv3 .hero-sub{width:calc(100% - 8px);margin-inline:auto;align-items:center;text-align:center}
+  .lv3 .hero-sub .hero-ctas{justify-content:center;width:100%}
+  /* Consejos: Clorito a la altura del título, descripción a todo el ancho */
+  .lv3 .lv3-consejos-cabecera{display:grid;grid-template-columns:1fr auto;column-gap:10px;align-items:center}
+  .lv3 .lv3-consejos-cabecera>div{display:contents}
+  .lv3 .lv3-consejos-cabecera .eyebrow{grid-column:1;grid-row:1;align-self:end}
+  .lv3 .lv3-consejos-cabecera h2{grid-column:1;grid-row:2;margin:6px 0 0}
+  .lv3 .lv3-consejos-cabecera>img,.lv3 .lv3-consejos-cabecera>.lv3-clorito{grid-column:2;grid-row:1/3}
+  .lv3 .lv3-consejos-cabecera p{grid-column:1/-1;grid-row:3;max-width:none;margin-top:12px}
+  /* Footer: más bajo y a todo el ancho */
+  .lv3 footer{margin:0!important;border-radius:22px 22px 0 0!important;padding:22px 0 14px!important}
+  .lv3 footer .sober-footer{padding-bottom:0!important}
+  .lv3 .lv3-pie-subir{display:grid!important;justify-self:center;width:34px;height:34px}
+}
+/* Celu: tarjetas de producto sin texto cortado y con menos "deck" en las fotos */
+@media(max-width:650px){
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product{grid-template-columns:124px minmax(0,1fr)}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-product-body{min-width:0}
+  .lv3 .v3-product-grid.lv3-catalogo .v3-image img[src*="combo-semanal"],
+  .lv3 .v3-product-grid.lv3-catalogo .v3-image img[src*="cloro-granulado"]{transform:scale(1.12);transform-origin:50% 6%;object-position:50% 0%}
+  /* Portada: se va para arriba al scrollear, como el resto de la página */
+  .lv3 .hero{height:auto!important}
+  .lv3 .hero-stage{position:relative!important}
+}
+@media(max-width:650px){.lv3 .v3-product-grid.lv3-catalogo .lv3-precio{flex-wrap:wrap;gap:2px 8px}}
+@media(max-width:650px){.lv3 .lv3-pie-subir{justify-self:center!important;align-self:center!important;margin:4px auto 0!important;position:static!important}}
+.lv3 .lv3-ayuda[hidden]{display:none}
+
+/* Calculadora: "Pedir mi cloro" y lo de abajo, a la izquierda (debajo de la pileta) en escritorio */
+.lv3 .lv3-calc-acciones{display:flex;flex-direction:column;gap:12px}
+.lv3 .lv3-calc-acciones.solo-escritorio{display:none;margin-top:22px;width:100%;max-width:380px;margin-inline:auto;text-align:center;align-items:stretch}
+.lv3 .lv3-calc-acciones.solo-escritorio .lv3-calc-pie{border-top:1px solid #1b5fa826;padding-top:12px;display:flex;justify-content:center}
+@media(min-width:801px){
+  .lv3 .lv3-calc-acciones.solo-escritorio{display:flex}
+  .lv3 .lv3-calc-acciones.solo-movil{display:none}
+}
+
+@media(min-width:801px){.lv3 .lv3-calc-der{align-self:center}}
+@media(min-width:801px){
+  .lv3 .lv3-calc-acciones.solo-escritorio .btn{align-self:center;width:auto;min-width:0;padding:12px 30px;font-size:15px}
+  .lv3 .lv3-calc-texto p{font-size:14px;max-width:none;width:calc(100% + 40px);margin-inline:-20px}
+}
+@media(min-width:801px){.lv3 .lv3-calc-texto p{width:calc(100% + 100px);margin-inline:-50px}}
+@media(min-width:801px){.lv3 .lv3-calc-texto p{font-size:13.5px;width:calc(100% + 56px);margin-inline:-28px;text-wrap:balance}}
+@media(min-width:801px){.lv3 .sober-footer .lv3-pie{text-align:center;justify-self:center}}
+@media(min-width:801px){.lv3 .sober-footer .lv3-pie{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:2px 14px}.lv3 .sober-footer .lv3-pie p{margin:0}.lv3 .sober-footer .lv3-pie .lv3-pie-lema{margin:0}}

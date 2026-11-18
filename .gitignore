@@ -1,0 +1,77 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env
+.env.local
+.env.*.local
+.env.test
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Playwright
+playwright-report/
+playwright-report-flows/
+test-results/
+playwright/.auth/
+
+# Suite acción-por-acción (resultados de corridas, no se commitean)
+/e2e-results.json
+/e2e-coverage.json
+/e2e-plan.json
+/e2e-raw.json
+/e2e-live.json
+/e2e-notes.json
+/e2e-runs/
+
+# Local sensitive files
+.claude/
+
+# Manual de usuario en PDF: se regenera con `npm run manual:generar` (las capturas de public/manual sí se versionan)
+/docs/manual/*.pdf
+
+# Demo estática de origen de la landing V3 (ya integrada en src/components/landing)
+/demo-v3/
+
+# Modelos y datasets de IA (LoRA de Clorito): pesados y fuera de git
+/ia/
+
+# Demo estática de origen del rediseño del backoffice (ya integrada en src/app/admin y src/components/admin)
+/demo-backoffice/
+
+# Nota de relevo entre chats (local)
+/RELEVO.md

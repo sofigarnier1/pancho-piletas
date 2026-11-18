@@ -1,0 +1,541 @@
+/*
+ * Estilo del backoffice (rediseño 2026-11, a partir de demo-backoffice/).
+ * Todo vive dentro de `.backoffice` (el contenedor de los layouts de /admin, /employee y /client): login, registro
+ * y landing usan los mismos componentes base (Button, Input, Card) y no deben cambiar.
+ * Los colores de estado siempre van acompañados de texto: el color solo refuerza.
+ */
+
+.backoffice {
+  /* Colores base: reemplazan los de shadcn solo dentro del backoffice */
+  --background: #eef6fd;
+  --foreground: #0b2440;
+  --card: #ffffff;
+  --card-foreground: #0b2440;
+  --popover: #ffffff;
+  --popover-foreground: #0b2440;
+  --primary: #1b5fa8;
+  --primary-foreground: #ffffff;
+  --primary-dark: #0f3d6e;
+  --primary-light: #4a9fd4;
+  --secondary: #edf3fa;
+  --secondary-foreground: #1b5fa8;
+  --muted: #f0f5fa;
+  --muted-foreground: #4d6482;
+  --accent: #eaf2fb;
+  --accent-foreground: #1b5fa8;
+  --border: #dce9f6;
+  --input: #cfdeee;
+  --ring: #1b5fa8;
+  --surface: #f0f5fa;
+  --radius: 0.875rem;
+
+  /* Identidad de la landing: amarillo sol y sombras azules suaves */
+  --sun: #ffc94a;
+  --sun-dark: #f2b21b;
+  --abyss: #081f3a;
+
+  /* Colores de estado */
+  --bo-green: #28745b;
+  --bo-green-tint: #eef6f1;
+  --bo-amber: #93671f;
+  --bo-amber-tint: #fcf5e8;
+  --bo-purple: #705498;
+  --bo-purple-tint: #f1edf9;
+  --bo-red: #ad4d52;
+  --bo-red-tint: #fbefef;
+  --bo-blue-tint: #eaf2fb;
+  --bo-shadow: 0 10px 30px rgb(15 61 110 / 0.07), 0 1px 2px rgb(15 61 110 / 0.04);
+  --bo-shadow-hover: 0 16px 40px rgb(15 61 110 / 0.12);
+
+  color: var(--foreground);
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgb(74 159 212 / 0.16), transparent 60%),
+    radial-gradient(900px 420px at -10% 110%, rgb(27 95 168 / 0.08), transparent 60%),
+    var(--background);
+}
+
+/* ── Barra lateral: azul profundo como las secciones oscuras de la landing ── */
+/* Agua clara: la misma capa celeste que usa la landing sobre la foto de agua (.underwater-world, fondo claro) */
+.bo-sidebar {
+  color: var(--primary-dark);
+  background:
+    linear-gradient(180deg, #a9dcf2b3, #74bfe8b3 55%, #4a9fd4c4),
+    url('/landing/v3/underwater.webp') center / cover fixed no-repeat,
+    #74bfe8;
+}
+/* Logo sin tarjeta: Clorito y las letras directo sobre el agua */
+.bo-sidebar-brand-wrap { display: flex; align-items: center; gap: 0.375rem; padding-left: 0.125rem; }
+.bo-sidebar-clorito {
+  height: 3.75rem; width: auto; flex-shrink: 0;
+  filter: drop-shadow(0 6px 10px rgb(15 61 110 / 0.3));
+}
+.bo-sidebar-brand { display: flex; align-items: center; filter: drop-shadow(0 2px 6px rgb(255 255 255 / 0.6)); }
+.bo-sidebar-group { color: rgb(15 61 110 / 0.75); }
+.bo-sidebar-link { color: var(--primary-dark); }
+.bo-sidebar-link:hover { background: rgb(255 255 255 / 0.4); color: var(--primary-dark); }
+.bo-sidebar-link[aria-current='page'] { background: #fff; color: var(--primary-dark); font-weight: 650; box-shadow: 0 6px 16px rgb(15 61 110 / 0.15), inset 3px 0 0 var(--sun); }
+.bo-sidebar-sep { border-color: rgb(15 61 110 / 0.15) !important; }
+.bo-sidebar-user { color: var(--primary-dark); }
+.bo-sidebar-user-role { color: rgb(15 61 110 / 0.7); }
+/* Barra de arriba con la misma agua clara del menú: la foto queda fija a la ventana para que menú y barra formen una L continua */
+.bo-topbar {
+  background:
+    linear-gradient(180deg, #a9dcf2b3, #9cd6f0b8),
+    url('/landing/v3/underwater.webp') center / cover fixed no-repeat,
+    #a9dcf2;
+  border-bottom-color: rgb(255 255 255 / 0.55) !important;
+  color: var(--primary-dark);
+}
+.bo-topbar nav, .bo-topbar nav * { color: rgb(15 61 110 / 0.8); }
+.bo-topbar nav .text-foreground { color: var(--primary-dark); font-weight: 650; }
+
+@layer components {
+  /* ── Página ─────────────────────────────────────────────── */
+  .bo-page {
+    width: 100%;
+    max-width: 1500px;
+    margin-inline: auto;
+    padding: 1.75rem 1rem 2rem;
+  }
+  @media (min-width: 640px) { .bo-page { padding: 2rem 1.5rem 2.25rem; } }
+  @media (min-width: 1024px) { .bo-page { padding: 2.25rem 2.25rem 2.5rem; } }
+  .bo-page-narrow { max-width: 60rem; }
+  .bo-page-md { max-width: 50rem; }
+  .bo-page-form { max-width: 42rem; }
+
+  .bo-page-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .bo-page-header > div:first-child { min-width: 0; }
+  .bo-eyebrow {
+    display: block;
+    color: var(--primary);
+    font-size: 0.625rem;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .bo-title {
+    font-family: var(--font-comfortaa), system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+    margin-top: 0.5rem;
+  }
+  @media (min-width: 640px) { .bo-title { font-size: 2.125rem; } }
+  .bo-subtitle { color: var(--muted-foreground); font-size: 0.8125rem; margin-top: 0.375rem; line-height: 1.6; }
+  .bo-capitalize { display: inline-block; }
+  .bo-capitalize::first-letter { text-transform: uppercase; }
+  .bo-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+
+  .bo-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    margin-bottom: 1rem;
+    transition: color 0.15s;
+  }
+  .bo-back:hover { color: var(--primary); }
+
+  /* ── Botones-enlace (los <Button> de shadcn ya toman los colores de arriba) ── */
+  .bo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    padding: 0.5rem 1.125rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--foreground);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgb(15 61 110 / 0.05);
+    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+  .bo-btn:hover { background: var(--muted); border-color: #afc4d9; }
+  .bo-btn svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+  .bo-btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    box-shadow: 0 10px 24px rgb(27 95 168 / 0.28);
+  }
+  .bo-btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); color: #fff; }
+  .bo-icon-btn {
+    display: inline-grid;
+    place-items: center;
+    width: 2.375rem;
+    height: 2.375rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--foreground);
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .bo-icon-btn:hover { background: var(--muted); border-color: #afc4d9; color: var(--primary); }
+  .bo-icon-btn svg { width: 1rem; height: 1rem; }
+  .bo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 550;
+    white-space: nowrap;
+  }
+  .bo-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .bo-link svg { width: 0.875rem; height: 0.875rem; }
+
+  /* ── Paneles ─────────────────────────────────────────────── */
+  .bo-panel {
+    background: var(--card);
+    border: 1px solid rgb(255 255 255 / 0.9);
+    border-radius: 1.5rem;
+    box-shadow: var(--bo-shadow);
+    overflow: hidden;
+    min-width: 0;
+  }
+  .bo-panel-pad { padding: 1.5rem; }
+  .bo-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+  }
+  .bo-panel-header.bordered { border-bottom: 1px solid var(--border); }
+  .bo-panel-title { font-family: var(--font-comfortaa), system-ui, sans-serif; letter-spacing: -0.01em; font-size: 1.0625rem; font-weight: 700; color: var(--primary-dark); }
+  .bo-panel-sub { font-size: 0.8125rem; color: var(--muted-foreground); margin-top: 0.25rem; }
+  .bo-panel-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+  }
+
+  /* Filas de listas (clientes, piletas, ventas…) */
+  .bo-rows > * + * { border-top: 1px solid var(--border); }
+  .bo-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.9375rem 1.5rem;
+    transition: background 0.15s;
+  }
+  a.bo-row:hover, button.bo-row:hover { background: #f3f9ff; }
+
+  /* ── Tablas ──────────────────────────────────────────────── */
+  .bo-table-wrap { overflow-x: auto; }
+  .bo-table { width: 100%; border-collapse: collapse; text-align: left; }
+  .bo-table th {
+    padding: 0.75rem 1.25rem;
+    background: #f3f9ff;
+    border-block: 1px solid var(--border);
+    color: var(--primary);
+    font-size: 0.6875rem;
+    font-weight: 550;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .bo-table td { padding: 0.875rem 1.25rem; border-bottom: 1px solid var(--border); font-size: 0.8125rem; vertical-align: middle; }
+  .bo-table tr:last-child td { border-bottom: 0; }
+  .bo-table tbody tr:hover td { background: #f9fbfd; }
+
+  /* ── Indicadores ─────────────────────────────────────────── */
+  .bo-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+  @media (min-width: 1024px) { .bo-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; } }
+  .bo-stats.cols-3 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  @media (min-width: 640px) { .bo-stats.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+  .bo-stat {
+    --tone: #4a9fd4;
+    --tint: var(--bo-blue-tint);
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid rgb(255 255 255 / 0.9);
+    border-radius: 1.5rem;
+    box-shadow: var(--bo-shadow);
+    padding: 1.125rem 1.25rem;
+    min-width: 0;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  @media (min-width: 640px) { .bo-stat { padding: 1.375rem 1.5rem; } }
+  .bo-stat::before { content: ''; position: absolute; inset: auto 1.5rem 0 1.5rem; height: 3px; border-radius: 3px 3px 0 0; background: var(--tone); }
+  a.bo-stat:hover { transform: translateY(-2px); box-shadow: var(--bo-shadow-hover); }
+  .bo-stat-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; color: var(--muted-foreground); font-size: 0.75rem; }
+  .bo-stat-top svg { box-sizing: content-box; width: 1rem; height: 1rem; padding: 0.5rem; border-radius: 999px; background: var(--tint); color: var(--tone); flex-shrink: 0; }
+  .bo-stat-value {
+    display: block;
+    margin: 0.75rem 0 0.375rem;
+    font-family: var(--font-comfortaa), system-ui, sans-serif;
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    color: var(--primary-dark);
+  }
+  @media (min-width: 640px) { .bo-stat-value { font-size: 2.125rem; } }
+  .bo-stat-foot { color: var(--muted-foreground); font-size: 0.6875rem; }
+  .tone-blue { --tone: #4a9fd4; --tint: var(--bo-blue-tint); }
+  .tone-green { --tone: #2b9270; --tint: var(--bo-green-tint); }
+  .tone-amber { --tone: var(--sun-dark); --tint: var(--bo-amber-tint); }
+  .tone-purple { --tone: #8872bc; --tint: var(--bo-purple-tint); }
+  .tone-green .bo-stat-value { color: var(--bo-green); }
+  .tone-amber .bo-stat-value { color: var(--bo-amber); }
+
+  /* ── Etiquetas de estado ─────────────────────────────────── */
+  .bo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
+    border-radius: 999px;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    background: var(--bo-blue-tint);
+    color: var(--primary);
+  }
+  .bo-badge::before { content: ''; width: 0.25rem; height: 0.25rem; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .bo-badge.green { background: var(--bo-green-tint); color: var(--bo-green); }
+  .bo-badge.amber { background: #fff4d6; color: #8a5a00; }
+  .bo-badge.purple { background: var(--bo-purple-tint); color: var(--bo-purple); }
+  .bo-badge.red { background: var(--bo-red-tint); color: var(--bo-red); }
+  .bo-badge.gray { background: var(--muted); color: var(--muted-foreground); }
+  .bo-badge.plain::before { display: none; }
+
+  /* ── Íconos y avatares ───────────────────────────────────── */
+  .bo-avatar {
+    display: grid;
+    place-items: center;
+    width: 2.125rem;
+    height: 2.125rem;
+    border-radius: 50%;
+    background: #e6eef8;
+    border: 1px solid #d5e3f1;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 650;
+    flex-shrink: 0;
+  }
+  .bo-avatar.sm { width: 1.875rem; height: 1.875rem; font-size: 0.6875rem; }
+  .bo-icon-tile {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    background: var(--bo-blue-tint);
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  .bo-icon-tile svg { width: 1.125rem; height: 1.125rem; }
+  .bo-icon-tile.green { background: var(--bo-green-tint); color: var(--bo-green); }
+  .bo-icon-tile.amber { background: var(--bo-amber-tint); color: var(--bo-amber); }
+  .bo-icon-tile.purple { background: var(--bo-purple-tint); color: var(--bo-purple); }
+  .bo-icon-tile.red { background: var(--bo-red-tint); color: var(--bo-red); }
+
+  /* ── Barra de herramientas, búsqueda y filtros ──────────── */
+  .bo-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.625rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
+  .bo-search {
+    width: 100%;
+    min-height: 2.375rem;
+    padding: 0.5rem 0.875rem 0.5rem 2.375rem;
+    border: 1px solid var(--input);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--foreground);
+    font-size: 0.8125rem;
+  }
+  .bo-search:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgb(27 95 168 / 0.12); }
+
+  /* ── Botones grandes del Dashboard (lo que más se usa, a un toque) ── */
+  .bo-big-action {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-height: 4rem;
+    padding: 0.875rem 1.375rem;
+    border: 1px solid rgb(255 255 255 / 0.9);
+    border-radius: 1.25rem;
+    background: var(--card);
+    box-shadow: var(--bo-shadow);
+    color: var(--foreground);
+    font-size: 0.9375rem;
+    font-weight: 650;
+    text-align: left;
+    transition: transform 0.25s, box-shadow 0.25s, background 0.2s;
+  }
+  .bo-big-action svg { width: 1.375rem; height: 1.375rem; color: var(--primary); flex-shrink: 0; }
+  .bo-big-action:hover { transform: translateY(-2px); box-shadow: var(--bo-shadow-hover); }
+  .bo-big-action.primary { background: var(--sun); border-color: var(--sun); color: var(--primary-dark); box-shadow: 0 12px 28px rgb(242 178 27 / 0.35); }
+  .bo-big-action.primary svg { color: var(--primary-dark); }
+  .bo-big-action.primary:hover { background: #ffd56e; }
+  .bo-segmented { display: inline-flex; gap: 0.25rem; padding: 0.25rem; border: 1px solid var(--border); border-radius: 999px; background: #e6f1fb; }
+  .bo-segmented > * {
+    padding: 0.375rem 0.875rem;
+    border-radius: 999px;
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    font-weight: 550;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+  }
+  .bo-segmented > *:hover { color: var(--primary); }
+  .bo-segmented > [data-active='true'] { background: var(--card); color: var(--primary); box-shadow: 0 2px 8px rgb(15 61 110 / 0.12); }
+
+  .bo-tabs { display: flex; gap: 1.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; overflow-x: auto; }
+  .bo-tabs > * {
+    padding: 0 0 0.75rem;
+    border-bottom: 2px solid transparent;
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+  .bo-tabs > [data-active='true'] { color: var(--primary-dark); border-color: var(--sun-dark); font-weight: 650; }
+
+  /* ── Avisos y estados vacíos ─────────────────────────────── */
+  .bo-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: #f3f9ff;
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    line-height: 1.65;
+  }
+  .bo-note > svg { width: 1rem; height: 1rem; margin-top: 0.2rem; color: var(--primary); flex-shrink: 0; }
+  .bo-note.amber { background: #fff8e5; border-color: #ffe39a; color: #6e4b00; }
+  .bo-note.amber > svg { color: var(--bo-amber); }
+  .bo-note.red { background: var(--bo-red-tint); border-color: #efd0d2; color: #8c3c41; }
+  .bo-note.red > svg { color: var(--bo-red); }
+
+  /* Lista vacía: Clorito relajado en el flotador en lugar del ícono gris (vale para todas las pantallas) */
+  .bo-empty { padding: 2.5rem 1.5rem 3rem; text-align: center; color: var(--muted-foreground); font-size: 0.875rem; }
+  .bo-empty > svg { display: none; }
+  .bo-empty::before {
+    content: '';
+    display: block;
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0 auto 0.875rem;
+    background: url('/icons/clorito-vacio.png') center / contain no-repeat;
+    filter: drop-shadow(0 8px 14px rgb(15 61 110 / 0.15));
+  }
+
+  /* Un panel seguido de tarjetas de números (ej.: Depósito de cloro en Stock) no queda pegado */
+  .bo-panel + .bo-stats { margin-top: 1.5rem; }
+
+  /* ── Formularios ─────────────────────────────────────────── */
+  .bo-form-section { padding: 1.5rem; }
+  .bo-form-section + .bo-form-section { border-top: 1px solid var(--border); }
+  .bo-form-title { font-size: 0.6875rem; font-weight: 650; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); margin-bottom: 1rem; }
+
+  .bo-dl { display: grid; gap: 0.875rem; font-size: 0.8125rem; }
+  .bo-dl dt { color: var(--muted-foreground); font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .bo-dl dd { color: var(--foreground); margin-top: 0.125rem; }
+}
+
+/* Campos nativos dentro del backoffice: mismo borde y foco que el resto */
+.backoffice select:not([class*='bo-']),
+.backoffice textarea,
+.backoffice input:not([type='checkbox']):not([type='radio']):not([type='range']),
+.backoffice button[role='combobox'] {
+  border-color: var(--input);
+  background-color: var(--card);
+}
+@media (max-width: 640px) {
+  /* 16px evita el zoom automático de iOS al tocar un campo */
+  .backoffice input:not([type='checkbox']):not([type='radio']),
+  .backoffice select,
+  .backoffice textarea { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .backoffice * { transition: none !important; }
+}
+
+/* Tabla tipo Excel suelta en la página (ej.: Visitas de hoy del Dashboard): va en una tarjeta blanca redondeada como los paneles.
+ * Si ya está dentro de un panel, no se le agrega otra tarjeta. */
+.backoffice .xl-root:not(.bo-panel .xl-root) {
+  background: var(--card);
+  border: 1px solid rgb(255 255 255 / 0.9);
+  border-radius: 1.5rem;
+  box-shadow: var(--bo-shadow);
+  overflow: hidden;
+}
+
+/* ── Tablas tipo Excel (src/components/tabla/TablaExcel.tsx) ──────────────────────────────────────────────
+ * Pensadas para leer de un vistazo, como una planilla: letra más grande, filas rayadas, encabezado fijo al bajar
+ * y la primera columna fija al deslizar de costado (en el celular no se pierde el nombre). */
+.backoffice .xl-wrap { overflow: auto; max-height: calc(100dvh - 15rem); min-height: 12rem; }
+.backoffice .xl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.9375rem; }
+.backoffice .xl th, .backoffice .xl td {
+  padding: 0.625rem 0.875rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.backoffice .xl td.xl-wrapcell { white-space: normal; min-width: 14rem; max-width: 22rem; }
+.backoffice .xl th {
+  position: sticky; top: 0; z-index: 2;
+  background: #e3f0fb;
+  color: var(--primary-dark);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+.backoffice .xl th button { display: inline-flex; align-items: center; gap: 0.25rem; font-weight: inherit; color: inherit; }
+.backoffice .xl th button:hover { text-decoration: underline; }
+.backoffice .xl tbody tr:nth-child(even) td { background: #f7fafd; }
+.backoffice .xl tbody tr td { background: var(--card); }
+.backoffice .xl tbody tr.xl-click { cursor: pointer; }
+.backoffice .xl tbody tr.xl-click:hover td { background: #e9f2fc; }
+.backoffice .xl tbody tr.xl-amber td { background: var(--bo-amber-tint); }
+.backoffice .xl tbody tr.xl-red td { background: var(--bo-red-tint); }
+.backoffice .xl tbody tr.xl-gray td { color: var(--muted-foreground); }
+.backoffice .xl .xl-num { text-align: right; font-variant-numeric: tabular-nums; }
+.backoffice .xl th:first-child, .backoffice .xl td:first-child { position: sticky; left: 0; z-index: 1; box-shadow: 1px 0 0 var(--border); }
+.backoffice .xl th:first-child { z-index: 3; }
+.backoffice .xl tfoot td {
+  position: sticky; bottom: 0; z-index: 2;
+  background: #e8f0f8; font-weight: 700; color: var(--primary-dark);
+  border-top: 2px solid #c9d8e8;
+}
+.backoffice .xl tfoot td:first-child { z-index: 3; }
+.backoffice .xl-cards { display: grid; gap: 0.75rem; padding: 1rem; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+.backoffice .xl-card {
+  display: block; width: 100%; text-align: left;
+  padding: 1rem 1.125rem; border: 1px solid var(--border); border-radius: 1.25rem; background: var(--card); box-shadow: 0 6px 18px rgb(15 61 110 / 0.06);
+  font-size: 0.9375rem;
+}
+.backoffice button.xl-card:hover { border-color: #afc4d9; background: #f7fafd; }
+.backoffice .xl-card.xl-amber { background: var(--bo-amber-tint); }
+.backoffice .xl-card.xl-red { background: var(--bo-red-tint); }
+@media print {
+  .backoffice .xl-wrap { max-height: none; overflow: visible; }
+}
