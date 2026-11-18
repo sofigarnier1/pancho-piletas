@@ -1,6 +1,6 @@
 # Cloro y Piletas Pancho — Web Integral
 
-> Proyecto hecho en equipo con otro desarrollador para un negocio real, todavía en desarrollo y sin publicar. **Mi parte (Sofía Garnier):** la landing, las pantallas del backoffice (diseñadas a partir de cómo trabaja el dueño, pensando en el día a día) y las tablas, consultas y migraciones de la base de datos. Los datos de este repositorio son todos de prueba.
+> Proyecto hecho en equipo con otro desarrollador para un negocio real, todavía en desarrollo y sin publicar. **Por mi parte (Sofía Garnier)**, diseñé y desarrollé la landing, las pantallas del backoffice (diseñadas a partir de cómo trabaja el dueño, pensando en el día a día) y las tablas, consultas y migraciones de la base de datos. Los datos de este repositorio son todos de prueba.
 
 Sistema web completo para el emprendimiento familiar de mantenimiento de piletas y venta de cloro en Zona Norte, Buenos Aires.
 
